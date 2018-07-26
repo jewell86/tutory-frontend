@@ -1,0 +1,20 @@
+{
+  "name": "tutory-frontend",
+  "version": "1.0.0",
+  "description": "Frontend code for the Tutory app",
+  "main": "index.js",
+  "scripts": {
+    "build": "browserify scripts/main.js -o bundle.js",
+    "watch": "watchify scripts/main.js -o bundle.js",
+    "dev-server": "live-server .",
+    "dev": "run-all \"npm run watch\" \"npm run dev-server\""
+  },
+  "author": "Branden Lowe, Nate Semmler, Jewell White",
+  "license": "ISC",
+  "devDependencies": {
+    "browserify": "^16.2.2",
+    "live-server": "^1.2.0",
+    "run-all": "^1.0.1",
+    "watchify": "^3.11.0"
+  }
+}

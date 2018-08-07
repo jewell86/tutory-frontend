@@ -26,10 +26,12 @@ function loggedOutNavButtonListeners() {
     })
     document.querySelector('.nav-login').addEventListener('click', (ev) => {
         ev.preventDefault()
-        const username = document.querySelector('.login-username')
-        const password = document.querySelector('.login-password')
+
         document.querySelector('.login-submit').addEventListener('click', (event) => {
             event.preventDefault()
+            const username = document.querySelector('.login-username').value
+            const password = document.querySelector('.login-password').value
+
             if ( username && password ) {
                 users.loginUserRequest( username, password )
                 .then(response => {

@@ -8,7 +8,7 @@ function registerUserRequest( firstName, lastName, username, email, password ) {
 }
 
 function loginUserRequest( username, password ) {
-    return axios.post('https://localhost:5000/users/login', { username, password })
+    return axios.post('http://localhost:5000/users/login', { username, password })
     .then(token => {
         localStorage.setItem('token', JSON.stringify(token.data.token))
     })
@@ -21,4 +21,4 @@ function viewProfileRequest() {
     })
 }
 
-module.exports = { registerUserRequest, loginUserRequest, viewProfileRequest } 
+module.exports = { registerUserRequest, loginUserRequest, viewProfileRequest }

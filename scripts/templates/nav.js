@@ -1,5 +1,5 @@
-function loggedInNavTemplate() { 
-    return ` 
+function loggedInNavTemplate() {
+    return `
     <div class="navbar-fixed">
     <nav>
     <div class="nav-wrapper">
@@ -15,13 +15,13 @@ function loggedInNavTemplate() {
 }
 
 function loggedOutNavTemplate() {
-    return ` 
+    return `
     <div class="navbar-fixed">
  <nav>
     <div class="nav-wrapper">
       <a href="#" class="brand-logo nav-home">Tutory</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-    
+
       <li class="dropdown">
       <a href="#" class="dropdown-toggle nav-login" data-toggle="dropdown"><b class="nav-login">Login</b> <span class="caret"></span></a>
         <ul id="login-dp" class="dropdown-menu">

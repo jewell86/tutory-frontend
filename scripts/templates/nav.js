@@ -5,6 +5,15 @@ function loggedInNavTemplate() {
     <div class="nav-wrapper">
       <a href="#" class="brand-logo nav-home">Tutory</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li class="search">
+      <form>
+      <div class="input-field">
+          <input id="search" type="search" required>
+          <label class="label-icon" for="search"><i class="material-icons glass">search</i></label>
+          <i class="material-icons close">close</i>
+        </div>
+        </form>
+        </li>
         <li><a href="#" class="nav-my-tutorials">My Tutorials</a></li>
         <li><a href="#" class="nav-my-profile">My Profile</a></li>
       </ul>
@@ -14,14 +23,22 @@ function loggedInNavTemplate() {
 `
 }
 
-function loggedOutNavTemplate() {
+function navTemplate() {
     return `
     <div class="navbar-fixed">
- <nav>
+    <nav>
     <div class="nav-wrapper">
       <a href="#" class="brand-logo nav-home">Tutory</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-
+      <li class="search">
+      <form>
+      <div class="input-field">
+          <input id="search" type="search" required>
+          <label class="label-icon" for="search"><i class="material-icons glass">search</i></label>
+          <i class="material-icons close">close</i>
+        </div>
+        </form>
+        </li>
       <li class="dropdown">
       <a href="#" class="dropdown-toggle nav-login" data-toggle="dropdown"><b class="nav-login">Login</b> <span class="caret"></span></a>
         <ul id="login-dp" class="dropdown-menu">
@@ -36,20 +53,13 @@ function loggedOutNavTemplate() {
                                          <input type="password" class="form-control login-password" id="exampleInputPassword2" placeholder="Password" required>
                                          <div class="help-block text-right"><a href="">Forget password?</a></div>
                                     </div>
-
                                     <div class="form-group">
                                          <button class="dropdown-toggle btn btn-primary btn-block login-submit" data-toggle="dropdown">Login</button>
                                     </div>
-                                    <div class="checkbox">
-                                         <label>
-                                         <input type="checkbox"> keep me logged-in
-                                         </label>
-                                    </div>
+                
                              </form>
                         </div>
-                        <div class="bottom text-center">
-                            New here ? <a href="#"><b>Join Us</b></a>
-                        </div>
+
                  </div>
             </li>
         </ul>
@@ -64,4 +74,4 @@ function loggedOutNavTemplate() {
 `
 }
 
-module.exports = { loggedInNavTemplate, loggedOutNavTemplate }
+module.exports = { loggedInNavTemplate, navTemplate }

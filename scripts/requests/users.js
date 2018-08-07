@@ -1,9 +1,10 @@
 const render = require('../render/render')
 
-function registerUserRequest( firstName, lastName, username, email, password ) {
-    return axios.post('https://localhost:5000/users/signup', { firstName, lastName, username, email, password })
+function registerUserRequest( username, email, password, first_name, last_name ) {
+    return axios.post('https://localhost:5000/users/signup', { username, email, password, first_name, last_name })
     .then(token => {
       localStorage.setItem('token', JSON.stringify(token.data.token))
+      console.log('token')
     })
 }
 
@@ -14,11 +15,18 @@ function loginUserRequest( username, password ) {
     })
 }
 
-function viewProfileRequest() {
-    return axios.get('https://localhost:5000/users/:userId')
-    .then(response => {
-        render.renderUsersProfilePage()
+function viewProfileRequest(id) {
+    return axios.get(`https://localhost:5000/users/${id}`)
+    // .then(response => {
+    //     render.renderUsersProfilePage()
+    // })
+}
+
+function searchRequest(query) {
+    return axios.get('https://localhost:5000/search', { query })
+    .then(result => {
+        render.renderSearchPage(result)
     })
 }
 
-module.exports = { registerUserRequest, loginUserRequest, viewProfileRequest }
+module.exports = { registerUserRequest, loginUserRequest, viewProfileRequest, searchRequest }

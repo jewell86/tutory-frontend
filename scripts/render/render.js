@@ -4,37 +4,39 @@ const users = require('../requests/users')
 
 
 function renderMainPage() {
-    // const loginCheck = JSON.parse(localStorage.getItem('token'))
     const navbar = document.querySelector('.navigation')
-    // if (loginCheck) {
-    //     navbar.innerHTML = nav.loggedInNavTemplate()
-    //     events.loggedInNavButtonListeners()
-    // } else {
-        navbar.innerHTML = nav.loggedOutNavTemplate()  
-        events.loggedOutNavButtonListeners()
-    // }
+    const token = JSON.parse(localStorage.getItem('token'))
+    if (token) {
+        navbar.innerHTML = nav.loggedInNavTemplate()  
+    } else {
+        navbar.innerHTML = nav.navTemplate()  
+    }
+    events.navButtonListeners()
+    events.tutorialUserLinkListeners()
     const main = document.querySelector('.main')
     main.innerHTML = home.homePageTemplate()
-    location.hash = `/home`
 }
 
 function renderRegisterPage() {
     const main = document.querySelector('.main')
     const navbar = document.querySelector('.navigation')
     main.innerHTML = register.registerPageTemplate()
-    navbar.innerHTML = nav.loggedOutNavTemplate()
-    location.hash = `/register`
-    events.loggedOutNavButtonListeners()
+    navbar.innerHTML = nav.navTemplate()
+    events.navButtonListeners()
     events.registerSubmitButtonListener()
 }
 
-function renderUsersProfilePage() {
-    const main = document.querySelector('.main')
-    const navbar = document.querySelector('.navigation')
-    main.innerHTML = profile.viewProfilePageTemplate()
-    navbar.innerHTML = nav.loggedOutNavTemplate()
-    location.hash = `/${userId}`
-    events.loggedOutNavButtonListeners()
+function renderUsersProfilePage(id) {
+    users.viewProfileRequest(id)
+    .then(user => {
+    document.querySelector('.main').innerHTML = profile.viewProfilePageTemplate(user)
+    document.querySelector('.navigation').innerHTML = nav.loggedOutNavTemplate()
+    })
+    events.navButtonListeners()
+}
+
+function renderTutorialPage(tutorial){
+
 }
 
 function renderMyTutorialsPage() {
@@ -45,5 +47,35 @@ function renderMyProfilePage() {
 
 }
 
+function renderSearchPage(response) {
+    const main = document.querySelector('.main')
+    const navbar = document.querySelector('.navigation')
+    main.innerHTML = search.searchPageTemplate()
+    navbar.innerHTML = nav.loggedOutNavTemplate()
+    response.forEach(item => {
+        const image = item.image_url
+        document.querySelector('.search-template').innerHTML += searchItem(image)
+    })
+    events.navButtonListeners()
+    events.tutorialUserLinkListeners()
+}
 
-module.exports = { renderMainPage, renderRegisterPage, renderUsersProfilePage, renderMyTutorialsPage, renderMyProfilePage }
+// if (item.username) {
+//     const image = item.image_url
+//     const username = item.username
+//     const firstName = item.first_name
+//     const lastName = item.last_name
+//     const aboutMe = item.about_me
+//     const myTutorials = item.user_tutorials
+//     searchArray.push({ image, username, firstName, lastName, aboutMe, myTutorials })
+// } else {
+//     const usersId = item.users_id
+//     const title = item.title
+//     const image = item.image_url
+//     const description = item.description
+//     const videoUrl = item.video_url
+//     searchArray.push({ usersId, title, description, videoUrl })
+// }
+
+
+module.exports = { renderMainPage, renderRegisterPage, renderUsersProfilePage, renderTutorialPage, renderMyTutorialsPage, renderMyProfilePage, renderSearchPage }

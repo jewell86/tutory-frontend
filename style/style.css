@@ -40,7 +40,7 @@ body{
     padding: 10px;
     width: 1000px;
     background: transparent;
-
+    text-align: center;
   }
 
 
@@ -146,6 +146,49 @@ nav {
 
 .brand-logo {
     margin-left: 100px;
+}
+
+.search {
+    margin-top: 20px;
+    margin-right: 30px;
+}
+/* 
+i.material-icons.glass {
+    padding-right: 100px;
+    display: block;
+
+}
+
+i.material-icons.close {
+
+} */
+
+/* PROFILE PAGE */
+
+.container-profile {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.name-card {
+    width: 50%;
+    text-align: center;
+    height: 200px;
+    background-color: rgba(234,124,14,0.7)
+}
+
+.profile-image {
+    float: right;
+    margin-top: 80px;
+    margin-right: 50px;
+}
+
+.about-me {
+    margin-top: 30px;
+}
+
+.profile-username {
+    padding-top: 30px;
 }
 
 

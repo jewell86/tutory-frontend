@@ -3,9 +3,8 @@ const nav = require('./nav')
 const home = require('./home')
 const profile = require('./profile')
 const search = require('./search')
-const signup = require('./signup')
+const register = require('./register')
 const tutorial = require('./tutorial')
-const user = require('./user')
 
 module.exports = {
   create,
@@ -13,7 +12,6 @@ module.exports = {
   home,
   profile,
   search,
-  signup,
+  register,
   tutorial,
-  user
 }

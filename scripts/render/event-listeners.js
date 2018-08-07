@@ -18,7 +18,7 @@ function loggedInNavButtonListeners () {
     })
 }
 
-function loggedOutNavButtonListeners () {
+function loggedOutNavButtonListeners() {
     const render = require('./render')
     document.querySelector('.nav-home').addEventListener('click', (ev) => {
         ev.preventDefault()
@@ -40,12 +40,13 @@ function loggedOutNavButtonListeners () {
     })
     document.querySelector('.nav-register').addEventListener('click', (ev) => {
         ev.preventDefault()
+        console.log('helo')
         render.renderRegisterPage()
     })
 }
 
 
-function registerSubmitButtonListener () {
+function registerSubmitButtonListener() {
     document.querySelector('.register-submit-button').addEventListener('click', (ev) => {
         const render = require('./render')
         const firstName = document.querySelector('.register-first-name').value
@@ -55,27 +56,32 @@ function registerSubmitButtonListener () {
         const password = document.querySelector('.register-password').value
         const secondPassword = document.querySelector('.register-second-password').value
         if ( password !== secondPassword ) {
-            return message.passwordsMatch()
-        }
-        if ( firstName && lastName && username && email && password ) {
+            message.passwordsMatch()
+            registerSubmitButtonListener()
+        } else if ( firstName && lastName && username && email && password ) {
             users.registerUserRequest( firstName, lastName, username, email, password )
             .then(response => {
                 render.renderMainPage()
             })
             .then(response => {
                 message.registerSuccess()
-        })
+            })
         } else {
-            return message.allFieldsRequired()
+            message.allFieldsRequired()
+            registerSubmitButtonListener()
         }
     })
 }
 
-``
+function searchButtonSubmitListener() {
+
+}
+
+window.onhashchange = render.renderUsersProfile
 
 
 
 
 
 
-module.exports = { loggedInNavButtonListeners, loggedOutNavButtonListeners, registerSubmitButtonListener }
+module.exports = { loggedInNavButtonListeners, loggedOutNavButtonListeners, searchButtonSubmitListener, registerSubmitButtonListener }

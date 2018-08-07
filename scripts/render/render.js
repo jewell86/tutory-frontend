@@ -46,4 +46,4 @@ function renderMyProfilePage() {
 }
 
 
-module.exports = { renderMainPage, renderRegisterPage, renderMyTutorialsPage, renderMyProfilePage, renderUsersProfilePage }
+module.exports = { renderMainPage, renderRegisterPage, renderUsersProfilePage, renderMyTutorialsPage, renderMyProfilePage }

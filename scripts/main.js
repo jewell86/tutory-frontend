@@ -4,3 +4,4 @@ const render = require('./render/render')
 //code to render login or main page upon initial visit
 
 render.renderMainPage()
+

@@ -1,5 +1,7 @@
 function loggedInNavTemplate() { 
-    return ` <nav>
+    return ` 
+    <div class="navbar-fixed">
+    <nav>
     <div class="nav-wrapper">
       <a href="#" class="brand-logo nav-home">Tutory</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
@@ -7,12 +9,14 @@ function loggedInNavTemplate() {
         <li><a href="#" class="nav-my-profile">My Profile</a></li>
       </ul>
     </div>
-  </nav>
+    </nav>
+    </div>
 `
 }
 
 function loggedOutNavTemplate() {
     return ` 
+    <div class="navbar-fixed">
  <nav>
     <div class="nav-wrapper">
       <a href="#" class="brand-logo nav-home">Tutory</a>
@@ -54,7 +58,9 @@ function loggedOutNavTemplate() {
       <li><a href="#"class="nav-register">Register</a></li>
       </ul>
     </div>
-  </nav>
+    </nav>
+    </div>
+
 `
 }
 

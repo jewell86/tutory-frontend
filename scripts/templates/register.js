@@ -1,6 +1,5 @@
 function registerPageTemplate() {
-    return   
-    `<div class="container register-form">
+    return    ` <div class="container register-form">
     <div class="row">
         <form class="col s12" id="reg-form">
           <div class="row">
@@ -38,13 +37,14 @@ function registerPageTemplate() {
         </div>
         <div class="alert-message"></div>
             <div class="input-field col s6">
-              <button class="btn btn-large btn-register waves-effect waves-light register-submit-button" type="submit" name="action">Register
+              <button class="btn btn-large btn-register waves-effect register-submit-button deep-orange accent-2" type="text" name="action">Register
               </button>
             </div>
           </div>
         </form>
       </div>
-    </div>`
+    </div>
+    `
 }
 
 module.exports = { registerPageTemplate }

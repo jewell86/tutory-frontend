@@ -14,10 +14,10 @@ function loginUserRequest( username, password ) {
     })
 }
 
-function viewProfileRequest(token) {
-    return axios.get('https://localhost:5000/users/:userId', { headers: { authorization: `Bearer ${token}`}})
+function viewProfileRequest() {
+    return axios.get('https://localhost:5000/users/:userId')
     .then(response => {
-        response
+        render.renderUsersProfilePage()
     })
 }
 

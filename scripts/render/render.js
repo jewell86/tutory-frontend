@@ -7,9 +7,9 @@ function renderMainPage() {
     const navbar = document.querySelector('.navigation')
     const token = JSON.parse(localStorage.getItem('token'))
     if (token) {
-        navbar.innerHTML = nav.loggedInNavTemplate()  
+        navbar.innerHTML = nav.loggedInNavTemplate()
     } else {
-        navbar.innerHTML = nav.navTemplate()  
+        navbar.innerHTML = nav.navTemplate()
     }
     events.navButtonListeners()
     events.tutorialUserLinkListeners()
@@ -33,6 +33,22 @@ function renderUsersProfilePage(id) {
     document.querySelector('.navigation').innerHTML = nav.loggedOutNavTemplate()
     })
     events.navButtonListeners()
+}
+
+function renderCreateTutorialPage() {
+  const main = document.querySelector('.main')
+  const navbar = document.querySelector('.navigation')
+  const token = JSON.parse(localStorage.getItem('token'))
+  if (token) {
+    main.innerHTML = create.createTutorialTemplate()
+    navbar.innerHTML = nav.loggedInNavTemplate()
+    events.navButtonListeners()
+    events.newTutorialListeners()
+  } else {
+    main.innerHTML = home.homePageTemplate()
+    navbar.innerHTML = nav.navTemplate()
+    events.navButtonListeners()
+  }
 }
 
 function renderTutorialPage(tutorial){
@@ -78,4 +94,4 @@ function renderSearchPage(response) {
 // }
 
 
-module.exports = { renderMainPage, renderRegisterPage, renderUsersProfilePage, renderTutorialPage, renderMyTutorialsPage, renderMyProfilePage, renderSearchPage }
+module.exports = { renderMainPage, renderRegisterPage, renderUsersProfilePage, renderTutorialPage, renderCreateTutorialPage, renderMyTutorialsPage, renderMyProfilePage, renderSearchPage }

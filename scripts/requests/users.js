@@ -31,4 +31,3 @@ function searchRequest(query) {
 }
 
 module.exports = { registerUserRequest, loginUserRequest, viewProfileRequest, searchRequest }
-

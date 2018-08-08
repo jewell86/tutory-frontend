@@ -1,5 +1,5 @@
 function profilePageTemplate() {
-   return ``
+   return `<h1 class="profile">profile page</h1>`
 }
 
 function updateProfilePageTemplate() {
@@ -29,7 +29,7 @@ function viewProfilePageTemplate(user) {
                 </div>
             </div>
         </div>
-    
+
     </div>
     <div class="row grid home-tutorials">
         <h1>My Tutorials</h1>
@@ -38,7 +38,7 @@ function viewProfilePageTemplate(user) {
         <img class="box" src="https://wiki.godvillegame.com/images/5/53/Business_cat.jpeg">
         <img class="box" src="https://wiki.godvillegame.com/images/5/53/Business_cat.jpeg">
     </div>
-</div>   ` 
+</div>   `
 }
 
 module.exports = { profilePageTemplate, updateProfilePageTemplate, viewProfilePageTemplate }

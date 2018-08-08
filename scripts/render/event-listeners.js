@@ -1,5 +1,6 @@
 const users = require('../requests/users')
 const tutorials = require('../requests/tutorials')
+const contents = require('../requests/contents')
 const render = require('./render')
 const message = require('./messages')
 
@@ -130,14 +131,19 @@ function newTutorialListeners () {
       const thumbnail = document.getElementById('img').value
       const newTutorial = await tutorials.createTutorial(title, description, thumbnail, users_id)
 
-      console.log(newTutorial)
+      const video1 = document.getElementById('video1').value
+      const newVideo1 = await contents.createTutorialContent(newTutorial.id, video2)
+      const video2 = document.getElementById('video2') ? document.getElementById('video2').value
+      if (video2) const newVideo2 = await contents.createTutorialContent(newTutorial.id, video2)
+      const video3 = document.getElementById('video3') ? document.getElementById('video3').value
+      if (video3) const newVideo3 = await contents.createTutorialContent(newTutorial.id, video3)
+      const video4 = document.getElementById('video4') ? document.getElementById('video4').value
+      if (video4) const newVideo4 = await contents.createTutorialContent(newTutorial.id, video4)
+      const video5 = document.getElementById('video5') ? document.getElementById('video5').value
+      if (video5) const newVideo5 = await contents.createTutorialContent(newTutorial.id, video5)
 
-      // const video1 = document.getElementById('video1') ? document.getElementById('video1').value
-      // const video2 = document.getElementById('video2') ? document.getElementById('video2').value
-      // const video3 = document.getElementById('video3') ? document.getElementById('video3').value
-      // const video4 = document.getElementById('video4') ? document.getElementById('video4').value
-      // const video5 = document.getElementById('video5') ? document.getElementById('video5').value
-      // axios to create content
+      const main = document.querySelector('.main')
+      main.innerHTML = profile.profilePageTemplate()
     } catch (e) {
       throw new Error(e)
     }

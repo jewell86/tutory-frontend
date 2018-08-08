@@ -2,9 +2,11 @@ const render = require('../render/render');
 
 function registerUserRequest( username, email, password, first_name, last_name ) {
     return axios.post('http://localhost:5000/users/signup', { username, email, password, first_name, last_name })
-    .then(({ token, user_id }) => {
-      localStorage.setItem('token', JSON.stringify(token.data.token))
-      localStorage.setItem('userId', JSON.stringify(token.data.user_id))
+    .then(result => {
+      const token = result.data.token
+      const userId = result.data.user_id  
+      localStorage.setItem('token', JSON.stringify(token))
+      localStorage.setItem('userId', JSON.stringify(userId))
 
     })
     .catch(e => console.log(e))
@@ -12,10 +14,12 @@ function registerUserRequest( username, email, password, first_name, last_name )
 
 function loginUserRequest( username, password ) {
     return axios.post('http://localhost:5000/users/login', { username, password })
-    .then(({ token, user_id }) => {
-        localStorage.setItem('token', JSON.stringify(token.data.token))
-        localStorage.setItem('userId', JSON.stringify(token.data.user_id))
-
+    .then(result => {
+        console.log(result.data)
+        const token = result.data.token
+        const userId = result.data.user_id 
+        localStorage.setItem('token', JSON.stringify(token))
+        localStorage.setItem('userId', JSON.stringify(userId))
     })
 }
 
@@ -55,8 +59,12 @@ function myTutorialsRequest(id, token) {
     })
 }
 
-function myProfileRequest() {
-
+function myProfileRequest(id, token) {
+    return axios.get(`http://localhost:5000/users/${id}/myProfile`, { headers: { authorization: `Bearer ${token}`}})
+    .then(response => {
+        const render = require('../render/render')
+        render.renderMyProfilePage(response)
+    })
 }
 
 module.exports = { registerUserRequest, loginUserRequest, viewProfileRequest, viewTutorialRequest, searchRequest, myTutorialsRequest, myProfileRequest }

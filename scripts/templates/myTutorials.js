@@ -1,17 +1,17 @@
 function myTutorialsPageTemplate() {
     return ` <div class="home-tutorials my-tutorial-template">
     <div class="grid">
-    <p>My Tutoraisl</p>
- 
+    <p class="my-tutorials">My Tutorials</p>
     </div>
  </div>
  `
  }
  
- function tutorial (item) {
-   return `  <img src="${item.image}" data-type="${item.type}" data-id="${item.id}" class="box search-item">
+ function tutorial(item) {
+
+   return `  <div><img src="${item.img}" data-id="${item.id}" class="box search-item">
              <p>${item.title}</p> 
-             
+             </div>
              `
  }
 

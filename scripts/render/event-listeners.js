@@ -19,7 +19,9 @@ function navButtonListeners() {
         })
         document.querySelector('.nav-my-profile').addEventListener('click', (ev) => {
             ev.preventDefault()
-            users.myProfileRequest()
+            const token = JSON.parse(localStorage.getItem('token'))
+            const id = JSON.parse(localStorage.getItem('userId'))
+            users.myProfileRequest(id, token)
         })
         document.querySelector('.search').addEventListener('submit', (ev) => {
             ev.preventDefault()

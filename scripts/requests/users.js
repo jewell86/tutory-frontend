@@ -1,4 +1,4 @@
-const render = require('../render/render')
+const render = require('../render/render');
 
 function registerUserRequest( username, email, password, first_name, last_name ) {
     return axios.post('http://localhost:5000/users/signup', { username, email, password, first_name, last_name })
@@ -17,18 +17,40 @@ function loginUserRequest( username, password ) {
 }
 
 function viewProfileRequest(id) {
-    return axios.get(`https://localhost:5000/users/${id}`)
-    // .then(response => {
-    //     render.renderUsersProfilePage()
-    // })
-}
-
-function searchRequest(query) {
-    return axios.get('https://localhost:5000/search', { query })
-    .then(result => {
-        render.renderSearchPage(result)
+    return axios.get(`http://localhost:5000/users/${id}`)
+    .then(response => {
+        const render = require('../render/render')
+        render.renderUsersProfilePage(response)
     })
 }
 
-module.exports = { registerUserRequest, loginUserRequest, viewProfileRequest, searchRequest }
+function viewTutorialRequest(id, userId) {
+    return axios.get(`http://localhost:5000/tutorials/${id}`)
+    .then(response => {
+        return axios.get(`http://localhost:5000/users/${userId}`)
+        .then(user => {
+            const render = require('../render/render')
+            render.renderTutorialPage(response, user)
+        })
+        })  
+    
+}
+
+function searchRequest(query) {
+    return axios.get(`http://localhost:5000/search/?q=${query}`)
+    .then(response => {
+        const render = require('../render/render')
+        render.renderSearchPage(response)
+    })
+}
+
+function myTutorialsRequest(id) {
+    return axios.get(`http://localhost:5000/users/${id}/myTutorials`)
+}
+
+function myProfileRequest() {
+
+}
+
+module.exports = { registerUserRequest, loginUserRequest, viewProfileRequest, viewTutorialRequest, searchRequest, myTutorialsRequest, myProfileRequest }
 

@@ -1,6 +1,6 @@
 const events = require('./event-listeners')
-const { create, home, nav, profile, search, register, tutorial, user } = require('../templates')
-const users = require('../requests/users')
+const { create, home, nav, profile, search, register, tutorial, user, myTutorials } = require('../templates')
+const users = require('../requests/users').default
 
 
 function renderMainPage() {
@@ -12,9 +12,9 @@ function renderMainPage() {
         navbar.innerHTML = nav.navTemplate()  
     }
     events.navButtonListeners()
-    events.tutorialUserLinkListeners()
     const main = document.querySelector('.main')
     main.innerHTML = home.homePageTemplate()
+    events.itemListeners()
 }
 
 function renderRegisterPage() {
@@ -26,20 +26,48 @@ function renderRegisterPage() {
     events.registerSubmitButtonListener()
 }
 
-function renderUsersProfilePage(id) {
-    users.viewProfileRequest(id)
-    .then(user => {
-    document.querySelector('.main').innerHTML = profile.viewProfilePageTemplate(user)
-    document.querySelector('.navigation').innerHTML = nav.loggedOutNavTemplate()
+function renderUsersProfilePage(response) {
+    console.log(response.data.response)
+    const image = response.data.response.photo_url
+    const username = response.data.response.username
+    const firstName = response.data.response.first_name
+    const lastName = response.data.response.last_name
+    const aboutMe = response.data.response.about_me
+    const tutorials = response.data.response.myTutorials
+    document.querySelector('.main').innerHTML = profile.viewProfilePageTemplate(image, username, firstName, lastName, aboutMe)
+    document.querySelector('.navigation').innerHTML = nav.navTemplate()
+    tutorials.forEach(tutorial => { 
+        document.querySelector('.my-tutorials').innerHTML += profile.myTutorials(tutorial)
     })
     events.navButtonListeners()
 }
 
-function renderTutorialPage(tutorial){
-
+function renderTutorialPage(response, user){
+    console.log(response.data.response)
+    const id = response.data.response.tutorial.id
+    const userId = response.data.response.tutorial.users_id
+    const title = response.data.response.tutorial.title
+    const description = response.data.response.tutorial.description
+    const instructorBio = user.data.response.about_me
+    const instructorImage = user.data.response.photo_url
+    const comments = response.data.response.comments
+    const videos = response.data.response.tutorial.urls
+    document.querySelector('.main').innerHTML = tutorial.tutorialPageTemplate(id, userId, title, description, instructorBio, instructorImage)
+    document.querySelector('.navigation').innerHTML = nav.loggedInNavTemplate()
+    comments.forEach(comment => {
+        document.querySelector('.comments').innerHTML += tutorial.commentsTemplate(comment.content)
+    })
+    videos.forEach(video => {
+        document.querySelector('.videos').innerHTML += tutorial.videosTemplate(video)
+    })
+    events.navButtonListeners()
 }
 
 function renderMyTutorialsPage() {
+    const main = document.querySelector('.main')
+    const navbar = document.querySelector('.navigation')
+    main.innerHTML = myTutorials.myTutorialsPageTemplate()
+    navbar.innerHTML = nav.loggedInNavTemplate()
 
 }
 
@@ -51,13 +79,20 @@ function renderSearchPage(response) {
     const main = document.querySelector('.main')
     const navbar = document.querySelector('.navigation')
     main.innerHTML = search.searchPageTemplate()
-    navbar.innerHTML = nav.loggedOutNavTemplate()
-    response.forEach(item => {
-        const image = item.image_url
-        document.querySelector('.search-template').innerHTML += searchItem(image)
+    navbar.innerHTML = nav.navTemplate()
+    console.log(response.data)
+    const data = Array.from(response.data.response)
+    console.log(response.data.response)
+    data.forEach(item => {
+        if (item.type === 'user'){
+            document.querySelector('.search-template').innerHTML += search.searchItemUser(item)
+        } else if (item.type === 'tutorial') {
+            document.querySelector('.search-template').innerHTML += search.searchItemTutorial(item)
+        }
     })
     events.navButtonListeners()
-    events.tutorialUserLinkListeners()
+    // events.tutorialUserLinkListeners()
+    events.itemListeners()
 }
 
 // if (item.username) {

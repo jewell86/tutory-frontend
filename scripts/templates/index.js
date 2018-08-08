@@ -5,6 +5,7 @@ const profile = require('./profile')
 const search = require('./search')
 const register = require('./register')
 const tutorial = require('./tutorial')
+const myTutorials = require('./myTutorials')
 
 module.exports = {
   create,
@@ -14,4 +15,5 @@ module.exports = {
   search,
   register,
   tutorial,
+  myTutorials
 }

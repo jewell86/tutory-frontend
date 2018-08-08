@@ -1,4 +1,4 @@
-const users = require('../requests/users')
+const users = require('../requests/users').default
 const render = require('./render')
 const message = require('./messages')
 
@@ -13,11 +13,11 @@ function navButtonListeners() {
         })
         document.querySelector('.nav-my-tutorials').addEventListener('click', (ev) => {
             ev.preventDefault()
-            render.renderMyTutorialsPage()
+            users.myTutorialsRequest(id)
         })
         document.querySelector('.nav-my-profile').addEventListener('click', (ev) => {
             ev.preventDefault()
-            render.renderMyProfilePage()
+            users.myProfileRequest()
         })
         document.querySelector('.search').addEventListener('submit', (ev) => {
             ev.preventDefault()
@@ -86,11 +86,21 @@ function registerSubmitButtonListener() {
     })
 }
 
-function tutorialUserLinkListeners() {
-    //event listener on click
-    //const id = event.id
-    //render.renderTutorialPage(id)
-    //or renderUserProfilePage(id)
+function itemListeners() {
+    document.querySelectorAll('.search-item').forEach(item => {
+        item.addEventListener('click', (ev) => {
+            ev.preventDefault()
+            const type = event.target.dataset.type
+            const id = event.target.dataset.id
+            if (type === 'user') {
+                console.log('user')
+                return users.viewProfileRequest(id)
+            } else if (type === 'tutorial') {
+                const userId = event.target.dataset.userid
+                return users.viewTutorialRequest(id, userId)
+            }
+         })    
+    })
 }
 
 
@@ -101,4 +111,5 @@ function tutorialUserLinkListeners() {
 
 
 
-module.exports = { navButtonListeners, registerSubmitButtonListener, tutorialUserLinkListeners }
+
+module.exports = { navButtonListeners, registerSubmitButtonListener, itemListeners }

@@ -14,7 +14,7 @@ function registerSuccess() {
 }
 
 function loginSuccess(){
-
+    
 }
 
 module.exports = { passwordsMatch, allFieldsRequired, registerSuccess, loginSuccess }

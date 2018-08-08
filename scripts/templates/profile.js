@@ -1,5 +1,5 @@
 function profilePageTemplate() {
-   return ``
+   return `<h1 class="profile">profile page</h1>`
 }
 
 function updateProfilePageTemplate() {
@@ -29,13 +29,13 @@ function viewProfilePageTemplate( image, username, firstName, lastName, aboutMe 
                 </div>
             </div>
         </div>
-    
+
     </div>
     <div class="row grid home-tutorials">
         <h1>My Tutorials</h1>
         <div class="my-tutorials"></div>
     </div>
-</div>   ` 
+</div>   `
 }
 
 function myTutorials(tutorial) {

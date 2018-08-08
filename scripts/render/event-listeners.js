@@ -1,16 +1,29 @@
 const users = require('../requests/users')
+const tutorials = require('../requests/tutorials')
+const profile = require('../templates/profile')
+const contents = require('../requests/contents')
 const render = require('./render')
 const message = require('./messages')
 
 
 function navButtonListeners() {
     const token = JSON.parse(localStorage.getItem('token'))
-    if (token) {    
+    if (token) {
         const render = require('./render')
         document.querySelector('.nav-home').addEventListener('click', (ev) => {
             ev.preventDefault()
             render.renderMainPage()
         })
+        document.querySelector('.nav-create-tutorial').addEventListener('click', (ev) => {
+            ev.preventDefault()
+            render.renderCreateTutorialPage()
+        })
+        // document.querySelector('.add-mult-videos-to-tutorial').addEventListener('click', (ev) => {
+        //     ev.preventDefault()
+        //     render.addAnotherVideoToTutorialTemplate()
+        //     do something here to dynamically generate new video inputs in the form
+        //     re-add button to form
+        // })
         document.querySelector('.nav-my-tutorials').addEventListener('click', (ev) => {
             ev.preventDefault()
             const token = JSON.parse(localStorage.getItem('token'))
@@ -110,8 +123,40 @@ function itemListeners() {
                 const users = require('../requests/users')
             users.viewTutorialRequest(id, userId)
             }
-         })    
+         })
     })
+}
+
+function newTutorialListeners () {
+  document.querySelector('.create-tutorial-btn').addEventListener('click', async (ev) => {
+    ev.preventDefault()
+
+    try {
+      const users_id = localStorage.getItem('userId')
+      const title = document.getElementById('title').value
+      const description = document.getElementById('desc') ? document.getElementById('desc').value : null
+      const thumbnail = document.getElementById('img').value
+      const newTutorial = await tutorials.createTutorial(title, description, thumbnail, parseInt(users_id))
+
+      console.log(newTutorial)
+
+      let i = 1
+      while (i < 6) {
+        const video = document.getElementById(`video${i}`)
+        if (video.value != '') {
+          let videoURL = video.value
+          const newVideo = await contents.createTutorialContent(parseInt(newTutorial.id), videoURL)
+          console.log(newVideo)
+        }
+        i++
+      }
+
+      let main = document.querySelector('.main')
+      main.innerHTML = profile.profilePageTemplate()
+    } catch (e) {
+      throw new Error('Failed to create tutorial')
+    }
+  })
 }
 
 
@@ -121,6 +166,4 @@ function itemListeners() {
 
 
 
-
-
-module.exports = { navButtonListeners, registerSubmitButtonListener, itemListeners }
+module.exports = { navButtonListeners, registerSubmitButtonListener, itemListeners, newTutorialListeners }

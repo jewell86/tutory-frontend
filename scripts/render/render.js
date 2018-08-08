@@ -39,7 +39,7 @@ function renderUsersProfilePage(response) {
     const aboutMe = response.data.response.about_me
     const tutorials = response.data.response.myTutorials
     document.querySelector('.main').innerHTML = profile.viewProfilePageTemplate(image, username, firstName, lastName, aboutMe)
-    tutorials.forEach(tutorial => { 
+    tutorials.forEach(tutorial => {
         document.querySelector('.my-tutorials').innerHTML += profile.myTutorials(tutorial)
     })
     const token = JSON.parse(localStorage.getItem('token'))
@@ -51,6 +51,7 @@ function renderUsersProfilePage(response) {
         }
     events.navButtonListeners()
 }
+
 
 function renderTutorialPage(response, user){
     console.log(response.data.response)
@@ -76,7 +77,26 @@ function renderTutorialPage(response, user){
         } else {
             navbar.innerHTML = nav.navTemplate()  
         }
+    }     
+
+function renderCreateTutorialPage() {
+  const main = document.querySelector('.main')
+  const navbar = document.querySelector('.navigation')
+  const token = JSON.parse(localStorage.getItem('token'))
+  if (token) {
+    main.innerHTML = create.createTutorialTemplate()
+    navbar.innerHTML = nav.loggedInNavTemplate()
     events.navButtonListeners()
+    events.newTutorialListeners()
+  } else {
+    main.innerHTML = home.homePageTemplate()
+    navbar.innerHTML = nav.navTemplate()
+    events.navButtonListeners()
+  }
+}
+
+function renderTutorialPage(tutorial){
+
 }
 
 function renderMyTutorialsPage(response) {
@@ -144,4 +164,4 @@ function renderSearchPage(response) {
 }
 
 
-module.exports = { renderMainPage, renderRegisterPage, renderUsersProfilePage, renderTutorialPage, renderMyTutorialsPage, renderMyProfilePage, renderSearchPage }
+module.exports = { renderMainPage, renderRegisterPage, renderUsersProfilePage, renderTutorialPage, renderCreateTutorialPage, renderMyTutorialsPage, renderMyProfilePage, renderSearchPage }

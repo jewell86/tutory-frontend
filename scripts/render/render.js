@@ -7,9 +7,9 @@ function renderMainPage() {
     const navbar = document.querySelector('.navigation')
     const token = JSON.parse(localStorage.getItem('token'))
     if (token) {
-        navbar.innerHTML = nav.loggedInNavTemplate()  
+        navbar.innerHTML = nav.loggedInNavTemplate()
     } else {
-        navbar.innerHTML = nav.navTemplate()  
+        navbar.innerHTML = nav.navTemplate()
     }
     events.navButtonListeners()
     const main = document.querySelector('.main')
@@ -35,31 +35,30 @@ function renderUsersProfilePage(response) {
     const tutorials = response.data.response.myTutorials
     document.querySelector('.main').innerHTML = profile.viewProfilePageTemplate(image, username, firstName, lastName, aboutMe)
     document.querySelector('.navigation').innerHTML = nav.navTemplate()
-    tutorials.forEach(tutorial => { 
+    tutorials.forEach(tutorial => {
         document.querySelector('.my-tutorials').innerHTML += profile.myTutorials(tutorial)
     })
     events.navButtonListeners()
 }
 
-function renderTutorialPage(response, user){
-    console.log(response.data.response)
-    const id = response.data.response.tutorial.id
-    const userId = response.data.response.tutorial.users_id
-    const title = response.data.response.tutorial.title
-    const description = response.data.response.tutorial.description
-    const instructorBio = user.data.response.about_me
-    const instructorImage = user.data.response.photo_url
-    const comments = response.data.response.comments
-    const videos = response.data.response.tutorial.urls
-    document.querySelector('.main').innerHTML = tutorial.tutorialPageTemplate(id, userId, title, description, instructorBio, instructorImage)
-    document.querySelector('.navigation').innerHTML = nav.loggedInNavTemplate()
-    comments.forEach(comment => {
-        document.querySelector('.comments').innerHTML += tutorial.commentsTemplate(comment.content)
-    })
-    videos.forEach(video => {
-        document.querySelector('.videos').innerHTML += tutorial.videosTemplate(video)
-    })
+function renderCreateTutorialPage() {
+  const main = document.querySelector('.main')
+  const navbar = document.querySelector('.navigation')
+  const token = JSON.parse(localStorage.getItem('token'))
+  if (token) {
+    main.innerHTML = create.createTutorialTemplate()
+    navbar.innerHTML = nav.loggedInNavTemplate()
     events.navButtonListeners()
+    events.newTutorialListeners()
+  } else {
+    main.innerHTML = home.homePageTemplate()
+    navbar.innerHTML = nav.navTemplate()
+    events.navButtonListeners()
+  }
+}
+
+function renderTutorialPage(tutorial){
+
 }
 
 function renderMyTutorialsPage(response) {
@@ -126,4 +125,4 @@ function renderSearchPage(response) {
 // }
 
 
-module.exports = { renderMainPage, renderRegisterPage, renderUsersProfilePage, renderTutorialPage, renderMyTutorialsPage, renderMyProfilePage, renderSearchPage }
+module.exports = { renderMainPage, renderRegisterPage, renderUsersProfilePage, renderTutorialPage, renderCreateTutorialPage, renderMyTutorialsPage, renderMyProfilePage, renderSearchPage }

@@ -39,8 +39,8 @@ function viewTutorialRequest(id, userId) {
             const render = require('../render/render')
             render.renderTutorialPage(response, user)
         })
-        })  
-    
+        })
+
 }
 
 function searchRequest(query) {
@@ -68,4 +68,3 @@ function myProfileRequest(id, token) {
 }
 
 module.exports = { registerUserRequest, loginUserRequest, viewProfileRequest, viewTutorialRequest, searchRequest, myTutorialsRequest, myProfileRequest }
-

@@ -10,7 +10,7 @@ function allFieldsRequired() {
 }
 
 function registerSuccess() {
-
+    document.querySelector('.alert-success').classList.remove('hide')
 }
 
 function loginSuccess(){

@@ -69,6 +69,9 @@ function navTemplate() {
       </ul>
     </div>
     </nav>
+    <div class="alert alert-success hide">
+        <strong>Success!</strong>
+    </div>
     </div>
 
 `

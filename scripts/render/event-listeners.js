@@ -58,10 +58,9 @@ function navButtonListeners() {
     }
 }
 
-
-
 function registerSubmitButtonListener() {
     document.querySelector('.register-submit-button').addEventListener('click', (ev) => {
+        ev.preventDefault()
         const render = require('./render')
         const first_name = document.querySelector('.register-first-name').value
         const last_name = document.querySelector('.register-last-name').value

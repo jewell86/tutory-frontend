@@ -37,7 +37,7 @@ function registerPageTemplate() {
         </div>
         <div class="alert-message"></div>
             <div class="input-field col s6">
-              <button class="btn btn-large btn-register waves-effect register-submit-button deep-orange accent-2" type="text" name="action">Register
+              <button class="btn btn-large btn-register waves-effect register-submit-button deep-orange accent-2" type="text"> Register
               </button>
             </div>
           </div>

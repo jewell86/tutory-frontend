@@ -54,7 +54,7 @@ function renderUsersProfilePage(response) {
 
 
 function renderTutorialPage(response, user){
-    console.log(response.data.response)
+    console.log('hello')
     const id = response.data.response.tutorial.id
     const userId = response.data.response.tutorial.users_id
     const title = response.data.response.tutorial.title
@@ -77,6 +77,7 @@ function renderTutorialPage(response, user){
         } else {
             navbar.innerHTML = nav.navTemplate()  
         }
+        events.navButtonListeners()
     }     
 
 function renderCreateTutorialPage() {
@@ -95,9 +96,7 @@ function renderCreateTutorialPage() {
   }
 }
 
-function renderTutorialPage(tutorial){
 
-}
 
 function renderMyTutorialsPage(response) {
     const main = document.querySelector('.main')

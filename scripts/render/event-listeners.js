@@ -115,6 +115,7 @@ function itemListeners() {
             ev.preventDefault()
             const type = event.target.dataset.type
             const id = event.target.dataset.id
+
             if (type === 'user') {
                 const users = require('../requests/users')
                 users.viewProfileRequest(id)
@@ -130,7 +131,6 @@ function itemListeners() {
 function newTutorialListeners () {
   document.querySelector('.create-tutorial-btn').addEventListener('click', async (ev) => {
     ev.preventDefault()
-
     try {
       const users_id = localStorage.getItem('userId')
       const title = document.getElementById('title').value

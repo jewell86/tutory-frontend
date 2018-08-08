@@ -14,7 +14,8 @@ function loggedInNavTemplate() {
         </div>
         </form>
         </li>
-        <li><a href="#" class="nav-my-tutorials">My Tutorials</a></li>
+        <li><a href="#" class="nav-create-tutorial">New Tutorial</a></li>
+        <li><a href="#" class="nav-my-tutorials">Watchlist</a></li>
         <li><a href="#" class="nav-my-profile">My Profile</a></li>
       </ul>
     </div>

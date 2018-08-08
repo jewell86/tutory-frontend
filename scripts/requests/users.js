@@ -2,17 +2,20 @@ const render = require('../render/render');
 
 function registerUserRequest( username, email, password, first_name, last_name ) {
     return axios.post('http://localhost:5000/users/signup', { username, email, password, first_name, last_name })
-    .then(token => {
+    .then(({ token, user_id }) => {
       localStorage.setItem('token', JSON.stringify(token.data.token))
-      console.log('token')
+      localStorage.setItem('userId', JSON.stringify(token.data.user_id))
+
     })
     .catch(e => console.log(e))
 }
 
 function loginUserRequest( username, password ) {
     return axios.post('http://localhost:5000/users/login', { username, password })
-    .then(token => {
+    .then(({ token, user_id }) => {
         localStorage.setItem('token', JSON.stringify(token.data.token))
+        localStorage.setItem('userId', JSON.stringify(token.data.user_id))
+
     })
 }
 
@@ -44,8 +47,12 @@ function searchRequest(query) {
     })
 }
 
-function myTutorialsRequest(id) {
-    return axios.get(`http://localhost:5000/users/${id}/myTutorials`)
+function myTutorialsRequest(id, token) {
+    return axios.get(`http://localhost:5000/users/${id}/myTutorials`, { headers: { authorization: `Bearer ${token}`}})
+    .then(response => {
+        const render = require('../render/render')
+        render.renderMyTutorialsPage(response)
+    })
 }
 
 function myProfileRequest() {

@@ -63,11 +63,22 @@ function renderTutorialPage(response, user){
     events.navButtonListeners()
 }
 
-function renderMyTutorialsPage() {
+function renderMyTutorialsPage(response) {
     const main = document.querySelector('.main')
     const navbar = document.querySelector('.navigation')
     main.innerHTML = myTutorials.myTutorialsPageTemplate()
     navbar.innerHTML = nav.loggedInNavTemplate()
+    const data = Array.from(response.data.response)
+    console.log(data)
+    // data.forEach(item => {
+    //     if (item.type === 'user'){
+    //         document.querySelector('.search-template').innerHTML += search.searchItemUser(item)
+    //     } else if (item.type === 'tutorial') {
+    //         document.querySelector('.search-template').innerHTML += search.searchItemTutorial(item)
+    //     }
+    // })
+    events.navButtonListeners()
+    events.itemListeners()
 
 }
 
@@ -80,9 +91,7 @@ function renderSearchPage(response) {
     const navbar = document.querySelector('.navigation')
     main.innerHTML = search.searchPageTemplate()
     navbar.innerHTML = nav.navTemplate()
-    console.log(response.data)
     const data = Array.from(response.data.response)
-    console.log(response.data.response)
     data.forEach(item => {
         if (item.type === 'user'){
             document.querySelector('.search-template').innerHTML += search.searchItemUser(item)
@@ -91,7 +100,6 @@ function renderSearchPage(response) {
         }
     })
     events.navButtonListeners()
-    // events.tutorialUserLinkListeners()
     events.itemListeners()
 }
 

@@ -1,4 +1,4 @@
-const users = require('../requests/users').default
+const users = require('../requests/users')
 const render = require('./render')
 const message = require('./messages')
 
@@ -13,7 +13,9 @@ function navButtonListeners() {
         })
         document.querySelector('.nav-my-tutorials').addEventListener('click', (ev) => {
             ev.preventDefault()
-            users.myTutorialsRequest(id)
+            const token = JSON.parse(localStorage.getItem('token'))
+            const id = JSON.parse(localStorage.getItem('userId'))
+            users.myTutorialsRequest(id, token)
         })
         document.querySelector('.nav-my-profile').addEventListener('click', (ev) => {
             ev.preventDefault()
@@ -93,11 +95,12 @@ function itemListeners() {
             const type = event.target.dataset.type
             const id = event.target.dataset.id
             if (type === 'user') {
-                console.log('user')
-                return users.viewProfileRequest(id)
+                const users = require('../requests/users')
+                users.viewProfileRequest(id)
             } else if (type === 'tutorial') {
                 const userId = event.target.dataset.userid
-                return users.viewTutorialRequest(id, userId)
+                const users = require('../requests/users')
+            users.viewTutorialRequest(id, userId)
             }
          })    
     })

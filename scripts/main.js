@@ -5,3 +5,7 @@ const render = require('./render/render')
 
 render.renderMainPage()
 
+window.onunload = function(ev) {
+    localStorage.removeItem('token')
+    localStorage.removeItem('userId')
+}

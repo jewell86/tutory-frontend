@@ -23,6 +23,12 @@ function navButtonListeners() {
             const id = JSON.parse(localStorage.getItem('userId'))
             users.myProfileRequest(id, token)
         })
+        document.querySelector('.nav-logout').addEventListener('click', (ev) => {
+            ev.preventDefault()
+            localStorage.removeItem('token')
+            localStorage.removeItem('userId')
+            render.renderMainPage()
+        })
         document.querySelector('.search').addEventListener('submit', (ev) => {
             ev.preventDefault()
             const query = document.querySelector('#search').value

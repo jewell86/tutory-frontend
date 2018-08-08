@@ -17,12 +17,14 @@ function loggedInNavTemplate() {
         <li><a href="#" class="nav-create-tutorial">New Tutorial</a></li>
         <li><a href="#" class="nav-my-tutorials">Watchlist</a></li>
         <li><a href="#" class="nav-my-profile">My Profile</a></li>
+        <li><a href="#" class="nav-logout">Logout</a></li>
+
       </ul>
     </div>
     </nav>
     </div>
 `
-}
+}   
 
 function navTemplate() {
     return `

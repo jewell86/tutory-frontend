@@ -57,7 +57,7 @@ function navTemplate() {
                                     <div class="form-group">
                                          <button class="dropdown-toggle btn btn-primary btn-block login-submit" data-toggle="dropdown">Login</button>
                                     </div>
-                
+
                              </form>
                         </div>
 

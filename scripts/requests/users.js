@@ -2,24 +2,18 @@ const render = require('../render/render');
 
 function registerUserRequest( username, email, password, first_name, last_name ) {
     return axios.post('http://localhost:5000/users/signup', { username, email, password, first_name, last_name })
-    .then(result => {
-      const token = result.data.token
-      const userId = result.data.user_id  
-      localStorage.setItem('token', JSON.stringify(token))
-      localStorage.setItem('userId', JSON.stringify(userId))
-
+    .then(response => {
+      localStorage.setItem('token', JSON.stringify(response.data.token))
+      localStorage.setItem('userId', response.data.user_id)
     })
     .catch(e => console.log(e))
 }
 
 function loginUserRequest( username, password ) {
     return axios.post('http://localhost:5000/users/login', { username, password })
-    .then(result => {
-        console.log(result.data)
-        const token = result.data.token
-        const userId = result.data.user_id 
-        localStorage.setItem('token', JSON.stringify(token))
-        localStorage.setItem('userId', JSON.stringify(userId))
+    .then(response => {
+      localStorage.setItem('token', JSON.stringify(response.data.token))
+      localStorage.setItem('userId', response.data.user_id)
     })
 }
 
@@ -39,8 +33,8 @@ function viewTutorialRequest(id, userId) {
             const render = require('../render/render')
             render.renderTutorialPage(response, user)
         })
-        })  
-    
+        })
+
 }
 
 function searchRequest(query) {
@@ -68,4 +62,3 @@ function myProfileRequest(id, token) {
 }
 
 module.exports = { registerUserRequest, loginUserRequest, viewProfileRequest, viewTutorialRequest, searchRequest, myTutorialsRequest, myProfileRequest }
-

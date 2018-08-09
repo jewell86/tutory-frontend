@@ -6,7 +6,7 @@ const users = require('./requests/users')
 
 users.mainPageRequest()
 
-window.onunload = function(ev) {
-    localStorage.removeItem('token')
-    localStorage.removeItem('userId')
-}
+// window.onunload = function(ev) {
+//     localStorage.removeItem('token')
+//     localStorage.removeItem('userId')
+// }

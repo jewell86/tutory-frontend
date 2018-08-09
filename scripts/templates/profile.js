@@ -38,10 +38,16 @@ function viewProfilePageTemplate( image, username, firstName, lastName, aboutMe 
 </div>   `
 }
 
-function myTutorials(tutorial) {
-    return `
-    <img class="box" src="${tutorial}">
-    `
+function myTutorials(userId, item) {
+
+    return ` <a href="#"><div class="card box search-item">
+    <div class="card-image">
+      <img class="search-item" src="${item.img}" data-type="tutorial" data-id="${item.id}" data-user-id="${userId}">
+      <span class="card-title">${item.title}</span>
+      <a class="btn-floating halfway-fab waves-effect waves-light red add-button"><i class="material-icons">add</i></a>
+    </div>
+  </div></a>
+  `
 }
 
 module.exports = { profilePageTemplate, updateProfilePageTemplate, viewProfilePageTemplate, myTutorials }

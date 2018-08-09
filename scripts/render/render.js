@@ -141,16 +141,18 @@ function renderMyProfilePage(response) {
     document.querySelector('.main').innerHTML = profile.viewProfilePageTemplate(image, username, firstName, lastName, aboutMe)
     const token = JSON.parse(localStorage.getItem('token'))
     const navbar = document.querySelector('.navigation')
+    const userId = JSON.parse(localStorage.getItem('userId'))
     if (token) {
             navbar.innerHTML = nav.loggedInNavTemplate()  
         } else {
             navbar.innerHTML = nav.navTemplate()  
         }
-    events.navButtonListeners()    
-    tutorials.forEach(tutorial => { 
-        document.querySelector('.my-tutorials').innerHTML += profile.myTutorials(tutorial)
-    })
-
+        tutorials.forEach(tutorial => { 
+            document.querySelector('.my-tutorials').innerHTML += profile.myTutorials(userId, tutorial)
+        })
+        events.navButtonListeners() 
+        events.itemListeners()
+        events.addButtonListener()   
 }
 
 function renderSearchPage(response) {

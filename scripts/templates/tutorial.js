@@ -31,15 +31,15 @@ function tutorialPageTemplate(id, userId, title, description, instructorBio, ins
 }
 
 function videosTemplate(video) {
-    return `
- <iframe width="420" height="315" src="${video}" frameborder="0" allowfullscreen></iframe>
-`
+  return `
+    <iframe width="420" height="315" src="${video}" frameborder="0" allowfullscreen></iframe>
+  `
 }
 
 function commentsTemplate (comment, user) {
-   return `
-                <h6>${comment}</h6>
-                <p>${user.username} | Created ${moment(user.created_at).format('MMMM Do YYYY (h:mm:ss a)')}</p>
-           `
+  return `
+    <h6>${comment}</h6>
+    <p>${user.username} | Created ${moment(user.created_at).format('MMMM Do YYYY (h:mm:ss a)')}</p>
+  `
 }
 module.exports = { tutorialPageTemplate, videosTemplate, commentsTemplate }

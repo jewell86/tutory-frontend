@@ -35,15 +35,15 @@ function viewProfileRequest(id) {
 }
 
 function viewTutorialRequest(id, userId) {
-    axios.get(`http://localhost:5000/tutorials/${id}`)
+  axios.get(`http://localhost:5000/tutorials/${id}`)
     .then(response => {
-        axios.get(`http://localhost:5000/users/${userId}`)
+      axios.get(`http://localhost:5000/users/${userId}`)
         .then(user => {
-            const render = require('../render/render')
-            render.renderTutorialPage(response, user)
+          const render = require('../render/render')
+          render.renderTutorialPage(response, user)
         })
     })
-        .catch(e => console.log(e))
+    .catch(e => console.log(e))
 }
 
 function searchRequest(query) {

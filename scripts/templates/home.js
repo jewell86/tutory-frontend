@@ -1,5 +1,5 @@
 function homePageTemplate() {
-    return `        
+    return `
     <div class="home-tutorials search-template">
      <div class="grid">
          <p></p>
@@ -9,7 +9,7 @@ function homePageTemplate() {
  }
 
 function homeItemTutorial(item){
-    return ` <a href="#"><div class="card box search-item">
+    return ` <a href="#"><div class="card box">
     <div class="card-image">
       <img class="search-item" src="${item.img}" data-type="${item.type}" data-id="${item.id}" data-user-id="${item.users_id}">
       <span class="card-title">${item.title}</span>
@@ -20,14 +20,14 @@ function homeItemTutorial(item){
 }
 
 function homeItemUser(item) {
-    
- return ` <a href="#"><div class="card box search-item">
+
+ return ` <a href="#"><div class="card box">
     <div class="card-image">
       <img class="search-item" src="${item.photo_url}" data-type="${item.type}" data-id="${item.id}">
       <span class="card-title">${item.username}</span>
     </div>
   </div></a>
   `
-}  
+}
 
 module.exports = { homePageTemplate, homeItemTutorial, homeItemUser }

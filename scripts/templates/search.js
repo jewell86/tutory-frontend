@@ -1,5 +1,5 @@
 function searchPageTemplate() {
-   return `        
+   return `
    <div class="home-tutorials search-template">
     <div class="grid">
         <p>Search Results</p>
@@ -10,7 +10,7 @@ function searchPageTemplate() {
 
 // function searchItemUser(item) {
 //   return `  <img src="${item.photo_url}" data-type="${item.type} "data-id="${item.id}" class="box search-item">
-//             <p>${item.username}</p> 
+//             <p>${item.username}</p>
 
 //             `
 // }
@@ -18,18 +18,18 @@ function searchPageTemplate() {
 function searchItemTutorial(item){
     return `  <img src="${item.photo_url}" data-type="${item.type}" data-id="${item.id}" class="box search-item">
     <p>${item.title}</p> `
-    
+
 }
 
 function searchItemUser(item) {
-    
- return ` <a href="#"><div class="card box search-item">
+
+ return ` <a href="#"><div class="card box">
     <div class="card-image">
       <img class="search-item" src="${item.photo_url}" data-type="${item.type}" data-id="${item.id}">
       <span class="card-title">${item.username}</span>
     </div>
   </div></a>
   `
-}  
+}
 
 module.exports = { searchPageTemplate, searchItemUser, searchItemTutorial }

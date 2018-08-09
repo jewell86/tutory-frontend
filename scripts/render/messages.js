@@ -17,7 +17,6 @@ function registerSuccess() {
 
 function loginSuccess(){
     document.querySelector('.alerts').innerHTML = ``
-
     document.querySelector('.alerts').innerHTML =`<div class="alert alert-success">
     <strong>You are logged in!</strong></div> `
 }

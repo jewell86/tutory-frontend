@@ -86,7 +86,13 @@ function renderTutorialPage(response, user){
     const instructorImage = user.data.response.photo_url
     const comments = response.data.response.comments
     const videos = response.data.response.tutorial.urls
+    const avgRating = response.data.response.tutorial.avg_rating
+
     document.querySelector('.main').innerHTML = tutorial.tutorialPageTemplate(id, userId, title, description, instructorBio, instructorImage)
+    const avgRatingPercentRounded = `${Math.round((avgRating / 5) * 100 / 10) * 10}%`
+    document.querySelector('.stars-inner').style.width = avgRatingPercentRounded
+    // console.log(document.querySelector('.stars-inner'))
+    
     comments.forEach(comment => {
         document.querySelector('.comments').innerHTML += tutorial.commentsTemplate(comment.content)
     })
@@ -103,6 +109,7 @@ function renderTutorialPage(response, user){
         events.navButtonListeners()
         events.addButtonListener()
     }     
+
 
 function renderCreateTutorialPage() {
   const main = document.querySelector('.main')

@@ -110,22 +110,23 @@ function registerSubmitButtonListener() {
 }
 
 function itemListeners() {
-    document.querySelectorAll('.search-item').forEach(item => {
-        item.addEventListener('click', (ev) => {
-            ev.preventDefault()
-            const type = event.target.dataset.type
-            const id = event.target.dataset.id
+  document.querySelectorAll('.search-item').forEach(item => {
+    item.addEventListener('click', (ev) => {
+      ev.preventDefault()
+      
+      const type = event.target.dataset.type
+      const id = event.target.dataset.id
 
-            if (type === 'user') {
-                const users = require('../requests/users')
-                users.viewProfileRequest(id)
-            } else if (type === 'tutorial') {
-                const userId = event.target.dataset.userid
-                const users = require('../requests/users')
-            users.viewTutorialRequest(id, userId)
-            }
-         })
+      if (type === 'user') {
+        const users = require('../requests/users')
+        users.viewProfileRequest(id)
+      } else if (type === 'tutorial') {
+        const userId = event.target.dataset.userid
+        const users = require('../requests/users')
+        users.viewTutorialRequest(id, userId)
+      }
     })
+  })
 }
 
 function newTutorialListeners () {

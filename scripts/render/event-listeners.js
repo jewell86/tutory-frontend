@@ -70,7 +70,6 @@ function navButtonListeners() {
         })
         document.querySelector('.nav-register').addEventListener('click', (ev) => {
             ev.preventDefault()
-            console.log('helo')
             render.renderRegisterPage()
         })
         document.querySelector('.search').addEventListener('submit', (ev) => {

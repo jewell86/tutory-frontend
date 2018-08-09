@@ -67,7 +67,7 @@ function renderUsersProfilePage(response) {
   tutorials.forEach(tutorial => {
       document.querySelector('.my-tutorials').innerHTML += profile.myTutorials(tutorial)
   })
-  
+
   const token = localStorage.getItem('token')
   const navbar = document.querySelector('.navigation')
 
@@ -96,6 +96,7 @@ function renderTutorialPage (response, user) {
   document.querySelector('.main').innerHTML = tutorial.tutorialPageTemplate(id, userId, title, description, instructorBio, instructorImage)
   const avgRatingPercentRounded = `${Math.round((avgRating / 5) * 100 / 10) * 10}%`
   document.querySelector('.stars-inner').style.width = avgRatingPercentRounded
+
   addCommentsToCommentsDiv(comments)
   events.addComment(comment, id)
 

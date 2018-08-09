@@ -40,7 +40,7 @@ function viewProfilePageTemplate( image, username, firstName, lastName, aboutMe 
 
 function myTutorials(userId, item) {
 
-    return ` <a href="#"><div class="card box search-item">
+    return ` <a href="#"><div class="card box">
     <div class="card-image">
       <img class="search-item" src="${item.img}" data-type="tutorial" data-id="${item.id}" data-user-id="${userId}">
       <span class="card-title">${item.title}</span>

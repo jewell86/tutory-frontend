@@ -1,3 +1,4 @@
+const comment = require('./comment')
 const create = require('./create')
 const nav = require('./nav')
 const home = require('./home')
@@ -8,6 +9,7 @@ const tutorial = require('./tutorial')
 const myTutorials = require('./myTutorials')
 
 module.exports = {
+  comment,
   create,
   nav,
   home,

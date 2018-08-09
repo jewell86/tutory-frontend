@@ -1,7 +1,8 @@
 const events = require('./event-listeners')
-const { create, home, nav, profile, search, register, tutorial, user, myTutorials } = require('../templates')
+const { comment, create, home, nav, profile, search, register, tutorial, user, myTutorials } = require('../templates')
 const users = require('../requests/users').default
 const message = require('./messages')
+const tutorialReq = require('../requests/tutorials')
 
 
 function renderMainPage(response, type) {
@@ -126,8 +127,6 @@ function renderCreateTutorialPage() {
     events.navButtonListeners()
   }
 }
-
-
 
 function renderMyTutorialsPage(response) {
     const main = document.querySelector('.main')

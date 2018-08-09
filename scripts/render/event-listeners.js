@@ -118,7 +118,7 @@ function itemListeners() {
         const users = require('../requests/users')
         users.viewProfileRequest(id)
       } else if (type === 'tutorial') {
-        const userId = event.target.dataset.userid
+        const userId = event.target.dataset.userId
         const users = require('../requests/users')
         users.viewTutorialRequest(id, userId)
       }

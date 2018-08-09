@@ -79,7 +79,7 @@ function renderUsersProfilePage(response) {
 }
 
 
-function renderTutorialPage(response, user){
+function renderTutorialPage (response, user) {
   const id = response.data.response.tutorial.id
   const userId = response.data.response.tutorial.users_id
   const title = response.data.response.tutorial.title
@@ -88,6 +88,7 @@ function renderTutorialPage(response, user){
   const instructorImage = user.data.response.photo_url
   const comments = response.data.response.comments
   const videos = response.data.response.tutorial.urls
+  const avgRating = response.data.response.tutorial.avg_rating
 
   document.querySelector('.main').innerHTML = tutorial.tutorialPageTemplate(id, userId, title, description, instructorBio, instructorImage)
   const avgRatingPercentRounded = `${Math.round((avgRating / 5) * 100 / 10) * 10}%`

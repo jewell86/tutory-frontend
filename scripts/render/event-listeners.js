@@ -63,7 +63,6 @@ function navButtonListeners() {
                     users.loginUserRequest( username, password )
                     .then(response => {
                         users.mainPageRequest('login')
-                        message.loginSuccess()
                     })
                 }
             })

@@ -213,9 +213,11 @@ div.card-image {
     width: 200px;
 }
 
+/* ALERTS */
+
 .logout {
     /* position: relative; */
-    padding-top: 75px;
+    padding-top: 10px;
 } 
 
 

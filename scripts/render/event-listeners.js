@@ -124,6 +124,7 @@ function itemListeners() {
             }
          })
     })
+  })
 }
 
 function newTutorialListeners () {

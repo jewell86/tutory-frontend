@@ -18,7 +18,7 @@ function registerUserRequest(username, email, password, first_name, last_name) {
             last_name
         })
         .then(response => {
-            localStorage.setItem('token', JSON.stringify(response.data.token))
+            localStorage.setItem('token', response.data.token)
             localStorage.setItem('userId', response.data.user_id)
         })
         .catch(e => console.log(e))
@@ -30,7 +30,7 @@ function loginUserRequest(username, password) {
             password
         })
         .then(response => {
-            localStorage.setItem('token', JSON.stringify(response.data.token))
+            localStorage.setItem('token', response.data.token)
             localStorage.setItem('userId', response.data.user_id)
         })
 }
@@ -95,7 +95,7 @@ function addToWatchListRequest(users_id, tutorials_id, token) {
         }
     })
     .then(response => {
-        const token = JSON.parse(localStorage.getItem('token'))
+        const token = localStorage.getItem('token')
         let userId = response.data.response.users_id
         myTutorialsRequest(userId, token)
     })

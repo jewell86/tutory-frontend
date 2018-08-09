@@ -6,7 +6,7 @@ const message = require('./messages')
 function renderMainPage(response, type) {
     const main = document.querySelector('.main')
     main.innerHTML = home.homePageTemplate()
-    const token = JSON.parse(localStorage.getItem('token'))
+    const token = localStorage.getItem('token')
     const navbar = document.querySelector('.navigation')
 
     if (token) {
@@ -42,7 +42,7 @@ function renderMainPage(response, type) {
 function renderRegisterPage() {
   const main = document.querySelector('.main')
   main.innerHTML = register.registerPageTemplate()
-  const token = JSON.parse(localStorage.getItem('token'))
+  const token = localStorage.getItem('token')
   const navbar = document.querySelector('.navigation')
 
   if (token) {
@@ -66,7 +66,7 @@ function renderUsersProfilePage(response) {
     tutorials.forEach(tutorial => {
         document.querySelector('.my-tutorials').innerHTML += profile.myTutorials(tutorial)
     })
-    const token = JSON.parse(localStorage.getItem('token'))
+    const token = localStorage.getItem('token')
     const navbar = document.querySelector('.navigation')
     if (token) {
             navbar.innerHTML = nav.loggedInNavTemplate()
@@ -98,7 +98,7 @@ function renderTutorialPage (response, user) {
 
   videos.forEach(video => { document.querySelector('.videos').innerHTML += tutorial.videosTemplate(video)})
 
-  const token = JSON.parse(localStorage.getItem('token'))
+  const token = localStorage.getItem('token')
   const navbar = document.querySelector('.navigation')
 
   if (token) navbar.innerHTML = nav.loggedInNavTemplate()
@@ -125,7 +125,7 @@ function addCommentsToCommentsDiv (comments, hideForm=false) {
 function renderCreateTutorialPage() {
   const main = document.querySelector('.main')
   const navbar = document.querySelector('.navigation')
-  const token = JSON.parse(localStorage.getItem('token'))
+  const token = localStorage.getItem('token')
   if (token) {
     main.innerHTML = create.createTutorialTemplate()
     navbar.innerHTML = nav.loggedInNavTemplate()
@@ -141,7 +141,7 @@ function renderCreateTutorialPage() {
 function renderMyTutorialsPage(response) {
     const main = document.querySelector('.main')
     main.innerHTML = myTutorials.myTutorialsPageTemplate()
-    const token = JSON.parse(localStorage.getItem('token'))
+    const token = localStorage.getItem('token')
     const navbar = document.querySelector('.navigation')
     if (token) {
             navbar.innerHTML = nav.loggedInNavTemplate()
@@ -168,7 +168,7 @@ function renderMyProfilePage(response) {
 
     document.querySelector('.main').innerHTML = profile.viewProfilePageTemplate(image, username, firstName, lastName, aboutMe)
 
-    const token = JSON.parse(localStorage.getItem('token'))
+    const token = localStorage.getItem('token')
     const navbar = document.querySelector('.navigation')
     const userId = JSON.parse(localStorage.getItem('userId'))
 
@@ -190,7 +190,7 @@ function renderMyProfilePage(response) {
 function renderSearchPage(response) {
     const main = document.querySelector('.main')
     main.innerHTML = search.searchPageTemplate()
-    const token = JSON.parse(localStorage.getItem('token'))
+    const token = localStorage.getItem('token')
     const navbar = document.querySelector('.navigation')
     if (token) {
             navbar.innerHTML = nav.loggedInNavTemplate()

@@ -7,7 +7,7 @@ const message = require('./messages')
 
 
 function navButtonListeners() {
-    const token = JSON.parse(localStorage.getItem('token'))
+    const token = localStorage.getItem('token')
     if (token) {
         const render = require('./render')
         document.querySelector('.nav-home').addEventListener('click', (ev) => {
@@ -26,13 +26,13 @@ function navButtonListeners() {
         // })
         document.querySelector('.nav-my-tutorials').addEventListener('click', (ev) => {
             ev.preventDefault()
-            const token = JSON.parse(localStorage.getItem('token'))
+            const token = localStorage.getItem('token')
             const id = JSON.parse(localStorage.getItem('userId'))
             users.myTutorialsRequest(id, token)
         })
         document.querySelector('.nav-my-profile').addEventListener('click', (ev) => {
             ev.preventDefault()
-            const token = JSON.parse(localStorage.getItem('token'))
+            const token = localStorage.getItem('token')
             const id = JSON.parse(localStorage.getItem('userId'))
             users.myProfileRequest(id, token)
         })

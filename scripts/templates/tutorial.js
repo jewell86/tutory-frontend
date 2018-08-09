@@ -1,4 +1,6 @@
-function tutorialPageTemplate(id, userId, title, description, instructorBio, instructorImage) {
+const moment = require('moment')
+
+function tutorialPageTemplate(id, userId, title, description, instructorBio, instructorImage ) {
     return `
     <div data-id="${id}" data-userid="${userId}"class="container">
     <h1>${title}</h1>
@@ -18,20 +20,26 @@ function tutorialPageTemplate(id, userId, title, description, instructorBio, ins
         </div>
         <h3>COMMENTS</h3>
 
-        <div class="comments"></div>
+        <div class="comments-div">
+          <div class="comments"></div>
+          <div class="add-comment-btn-div">
+            <button class="add-comment">Add Comment</button>
+          </div>
+        </div>
     </div>
     `
 }
 
 function videosTemplate(video) {
-    return `
- <iframe width="420" height="315" src="${video}" frameborder="0" allowfullscreen></iframe>
-`
+  return `
+    <iframe width="420" height="315" src="${video}" frameborder="0" allowfullscreen></iframe>
+  `
 }
 
-function commentsTemplate(comment) {
-    return ` 
-                <h6>${comment}</h6>
-           `
+function commentsTemplate (comment, user) {
+  return `
+    <h6>${comment}</h6>
+    <p>${user.username} | Created ${moment(user.created_at).format('MMMM Do YYYY (h:mm:ss a)')}</p>
+  `
 }
 module.exports = { tutorialPageTemplate, videosTemplate, commentsTemplate }

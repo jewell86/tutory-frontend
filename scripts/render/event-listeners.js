@@ -107,23 +107,23 @@ function registerSubmitButtonListener() {
 }
 
 function itemListeners() {
-    document.querySelectorAll('.search-item').forEach(item => {
-        item.addEventListener('click', (ev) => {
-            ev.preventDefault()
+  document.querySelectorAll('.search-item').forEach(item => {
+    item.addEventListener('click', (ev) => {
+      ev.preventDefault()
 
-            const type = event.target.dataset.type
-            const id = event.target.dataset.id
-            console.log(event.target.dataset.id)
-            if (type === 'user') {
-                const users = require('../requests/users')
-                users.viewProfileRequest(id)
-            } else if (type === 'tutorial') {
-                const userId = event.target.dataset.userId
-                const users = require('../requests/users')
-                users.viewTutorialRequest(id, userId)
-            }
-         })
+      const type = event.target.dataset.type
+      const id = event.target.dataset.id
+
+      if (type === 'user') {
+        const users = require('../requests/users')
+        users.viewProfileRequest(id)
+      } else if (type === 'tutorial') {
+        const userId = event.target.dataset.userId
+        const users = require('../requests/users')
+        users.viewTutorialRequest(id, userId)
+      }
     })
+  })
 }
 
 function newTutorialListeners () {
@@ -174,10 +174,36 @@ function addButtonListener() {
 }
 
 
+function addComment (comment, id) {
+  document.querySelector('.add-comment').addEventListener('click', (ev) => {
+    ev.preventDefault()
+
+    document.querySelector('.container').innerHTML += comment.newCommentFormTemplate()
+    if (document.getElementById('new-tutorial-form').getAttribute('display') === 'none') document.getElementById('new-tutorial-form').removeAttribute('display')
+
+    document.querySelector('.create-comment-btn').addEventListener('click', async (ev) => {
+      ev.preventDefault()
+
+      try {
+        const users_id = localStorage.getItem('userId')
+        const tutorials_id = id
+        const content = document.querySelector('.comment-content').value
+        const newComment = await tutorials.createTutorialComment(parseInt(users_id), parseInt(tutorials_id), content)
+
+        const user = await axios.get(`http://localhost:5000/users/${newComment[0].users_id}`)
+          .then(response => { return response.data.response })
+
+        document.querySelector('.comments').innerHTML = ''
+
+        const updatedComments = await axios.get(`http://localhost:5000/tutorials/${id}`).then(response => { return response.data.response })
+        const render = require('./render')
+        render.addCommentsToCommentsDiv(updatedComments.comments, true)
+      } catch (e) { throw new Error(e) }
+    })
+  })
+}
 
 
 
 
-
-
-module.exports = { navButtonListeners, registerSubmitButtonListener, itemListeners, newTutorialListeners, addButtonListener, }
+module.exports = { navButtonListeners, registerSubmitButtonListener, itemListeners, newTutorialListeners, addButtonListener, addComment }

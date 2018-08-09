@@ -210,5 +210,7 @@ div.card-image {
     width: 200px;
 }
 
-.card-title {
-}
+.logout {
+    /* position: relative; */
+    padding-top: 75px;
+} 

@@ -1,11 +1,12 @@
 const render = require('../render/render');
 
 
-function mainPageRequest() {
+function mainPageRequest(type) {
     return axios.get(`http://localhost:5000/search/?q=`)
     .then(response => {
         const render = require('../render/render')
-        render.renderMainPage(response)
+        console.log(type)
+        render.renderMainPage(response, type)
     })
     
 }
@@ -70,7 +71,6 @@ function myTutorialsRequest(id, token) {
             }
         })
         .then(response => {
-            console.log(response)
             const render = require('../render/render')
             render.renderMyTutorialsPage(response)
         })

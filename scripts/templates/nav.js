@@ -23,6 +23,8 @@ function loggedInNavTemplate() {
     </div>
     </nav>
     </div>
+    <div class="alerts"></div>
+
 `
 }   
 
@@ -72,12 +74,14 @@ function navTemplate() {
       </ul>
     </div>
     </nav>
-    <div class="alert alert-success hide">
-        <strong>Success!</strong>
-    </div>
-    </div>
+    <div class="alerts"></div>
+
+     
+    
 
 `
 }
+
+
 
 module.exports = { loggedInNavTemplate, navTemplate }

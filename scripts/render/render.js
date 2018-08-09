@@ -1,9 +1,10 @@
 const events = require('./event-listeners')
 const { create, home, nav, profile, search, register, tutorial, user, myTutorials } = require('../templates')
 const users = require('../requests/users').default
+const message = require('./messages')
 
 
-function renderMainPage(response) {
+function renderMainPage(response, type) {
     const main = document.querySelector('.main')
     main.innerHTML = home.homePageTemplate()
     const token = JSON.parse(localStorage.getItem('token'))
@@ -13,6 +14,16 @@ function renderMainPage(response) {
         } else {
             navbar.innerHTML = nav.navTemplate()  
         }
+    if (type === 'register') {
+        message.registerSuccess()
+    }
+    else if (type === 'login') {
+        console.log('success')
+        message.loginSuccess()
+    }
+    else if (type === 'logout') {
+        message.logoutSuccess()
+    }   
     const data = Array.from(response.data.response)
     data.forEach(item => {
         if (item.type === 'user'){

@@ -40,7 +40,7 @@ function navButtonListeners() {
             ev.preventDefault()
             localStorage.removeItem('token')
             localStorage.removeItem('userId')
-            users.mainPageRequest()
+            users.mainPageRequest('logout')
         })
         document.querySelector('.search').addEventListener('submit', (ev) => {
             ev.preventDefault()
@@ -62,7 +62,7 @@ function navButtonListeners() {
                 if ( username && password ) {
                     users.loginUserRequest( username, password )
                     .then(response => {
-                        users.mainPageRequest()
+                        users.mainPageRequest('login')
                         message.loginSuccess()
                     })
                 }
@@ -97,10 +97,7 @@ function registerSubmitButtonListener() {
         } else if ( first_name && last_name && username && email && password ) {
             users.registerUserRequest(  username, email, password, first_name, last_name )
             .then(response => {
-                users.mainPageRequest()
-            })
-            .then(response => {
-                message.registerSuccess()
+                users.mainPageRequest('register')
             })
         } else {
             message.allFieldsRequired()

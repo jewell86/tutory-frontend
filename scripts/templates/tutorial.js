@@ -1,3 +1,5 @@
+const moment = require('moment')
+
 function tutorialPageTemplate(id, userId, title, description, instructorBio, instructorImage ) {
     return `
     <div data-id="${id}" data-userid="${userId}"class="container">
@@ -24,9 +26,10 @@ function videosTemplate (video) {
 `
 }
 
-function commentsTemplate (comment) {
-   return ` 
+function commentsTemplate (comment, user) {
+   return `
                 <h6>${comment}</h6>
+                <p>${user.username} | Created ${moment(user.created_at).format('MMMM Do YYYY (h:mm:ss a)')}</p>
            `
 }
 module.exports = { tutorialPageTemplate, videosTemplate, commentsTemplate }

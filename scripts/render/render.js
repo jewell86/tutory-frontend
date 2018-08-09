@@ -4,6 +4,8 @@ const users = require('../requests/users').default
 const message = require('./messages')
 
 function renderMainPage(response, type) {
+    if (window.scrollY) window.scroll(0, 0)
+
     const main = document.querySelector('.main')
     main.innerHTML = home.homePageTemplate()
     const token = localStorage.getItem('token')
@@ -40,6 +42,8 @@ function renderMainPage(response, type) {
 
 
 function renderRegisterPage() {
+  if (window.scrollY) window.scroll(0, 0)
+
   const main = document.querySelector('.main')
   main.innerHTML = register.registerPageTemplate()
   const token = localStorage.getItem('token')
@@ -56,6 +60,7 @@ function renderRegisterPage() {
 }
 
 function renderUsersProfilePage(response) {
+    if (window.scrollY) window.scroll(0, 0)
 
     const image = response.data.response.photo_url
     const username = response.data.response.username
@@ -77,12 +82,14 @@ function renderUsersProfilePage(response) {
         }
     events.navButtonListeners()
     events.addButtonListener()
-    events.itemListeners()    
+    events.itemListeners()
 
 }
 
 
 function renderTutorialPage (response, user) {
+  if (window.scrollY) window.scroll(0, 0)
+
   const id = response.data.response.tutorial.id
   const userId = response.data.response.tutorial.users_id
   const title = response.data.response.tutorial.title
@@ -128,6 +135,8 @@ function addCommentsToCommentsDiv (comments, hideForm=false) {
 }
 
 function renderCreateTutorialPage() {
+  if (window.scrollY) window.scroll(0, 0)
+
   const main = document.querySelector('.main')
   const navbar = document.querySelector('.navigation')
   const token = localStorage.getItem('token')
@@ -144,6 +153,8 @@ function renderCreateTutorialPage() {
 }
 
 function renderMyTutorialsPage(response) {
+    if (window.scrollY) window.scroll(0, 0)
+
     const main = document.querySelector('.main')
     main.innerHTML = myTutorials.myTutorialsPageTemplate()
     const token = localStorage.getItem('token')
@@ -164,6 +175,8 @@ function renderMyTutorialsPage(response) {
 }
 
 function renderMyProfilePage(response) {
+    if (window.scrollY) window.scroll(0, 0)
+
     const image = response.data.response.photo_url
     const username = response.data.response.username
     const firstName = response.data.response.first_name
@@ -193,6 +206,8 @@ function renderMyProfilePage(response) {
 }
 
 function renderSearchPage(response) {
+    if (window.scrollY) window.scroll(0, 0)
+
     const main = document.querySelector('.main')
     main.innerHTML = search.searchPageTemplate()
     const token = localStorage.getItem('token')

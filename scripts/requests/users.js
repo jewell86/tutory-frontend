@@ -5,7 +5,6 @@ function mainPageRequest(type) {
     return axios.get(`http://localhost:5000/search/?q=`)
     .then(response => {
         const render = require('../render/render')
-        console.log(type)
         render.renderMainPage(response, type)
     })
 

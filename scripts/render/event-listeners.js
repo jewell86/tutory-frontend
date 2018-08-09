@@ -155,7 +155,6 @@ function newTutorialListeners () {
   })
 }
 
-<<<<<<< HEAD
 function addButtonListener() {
     document.querySelectorAll('.btn-floating').forEach(button => {
         button.addEventListener('click', (ev) => {
@@ -174,7 +173,7 @@ function addButtonListener() {
     })
 }
 
-=======
+
 function addComment (comment, id) {
   document.querySelector('.add-comment').addEventListener('click', (ev) => {
     ev.preventDefault()
@@ -189,8 +188,6 @@ function addComment (comment, id) {
         const users_id = localStorage.getItem('userId')
         const tutorials_id = id
         const content = document.querySelector('.comment-content').value
->>>>>>> Refactored #renderTutorialPage by creating #addCommentsToCommentsDiv and event listener function #addComment
-
         const newComment = await tutorials.createTutorialComment(parseInt(users_id), parseInt(tutorials_id), content)
 
         const user = await axios.get(`http://localhost:5000/users/${newComment[0].users_id}`)
@@ -209,8 +206,4 @@ function addComment (comment, id) {
 
 
 
-<<<<<<< HEAD
-module.exports = { navButtonListeners, registerSubmitButtonListener, itemListeners, newTutorialListeners, addButtonListener, }
-=======
-module.exports = { navButtonListeners, registerSubmitButtonListener, itemListeners, newTutorialListeners, addComment }
->>>>>>> Refactored #renderTutorialPage by creating #addCommentsToCommentsDiv and event listener function #addComment
+module.exports = { navButtonListeners, registerSubmitButtonListener, itemListeners, newTutorialListeners, addButtonListener, addComment }

@@ -10,9 +10,9 @@ function renderMainPage(response, type) {
     const token = JSON.parse(localStorage.getItem('token'))
     const navbar = document.querySelector('.navigation')
     if (token) {
-            navbar.innerHTML = nav.loggedInNavTemplate()  
+            navbar.innerHTML = nav.loggedInNavTemplate()
         } else {
-            navbar.innerHTML = nav.navTemplate()  
+            navbar.innerHTML = nav.navTemplate()
         }
     if (type === 'register') {
         message.registerSuccess()
@@ -23,7 +23,7 @@ function renderMainPage(response, type) {
     }
     else if (type === 'logout') {
         message.logoutSuccess()
-    }   
+    }
     const data = Array.from(response.data.response)
     data.forEach(item => {
         if (item.type === 'user'){
@@ -45,9 +45,9 @@ function renderRegisterPage() {
     const token = JSON.parse(localStorage.getItem('token'))
     const navbar = document.querySelector('.navigation')
     if (token) {
-            navbar.innerHTML = nav.loggedInNavTemplate()  
+            navbar.innerHTML = nav.loggedInNavTemplate()
         } else {
-            navbar.innerHTML = nav.navTemplate()  
+            navbar.innerHTML = nav.navTemplate()
         }
     events.navButtonListeners()
     events.registerSubmitButtonListener()
@@ -67,9 +67,9 @@ function renderUsersProfilePage(response) {
     const token = JSON.parse(localStorage.getItem('token'))
     const navbar = document.querySelector('.navigation')
     if (token) {
-            navbar.innerHTML = nav.loggedInNavTemplate()  
+            navbar.innerHTML = nav.loggedInNavTemplate()
         } else {
-            navbar.innerHTML = nav.navTemplate()  
+            navbar.innerHTML = nav.navTemplate()
         }
     events.navButtonListeners()
     events.addButtonListener()
@@ -92,7 +92,7 @@ function renderTutorialPage(response, user){
     const avgRatingPercentRounded = `${Math.round((avgRating / 5) * 100 / 10) * 10}%`
     document.querySelector('.stars-inner').style.width = avgRatingPercentRounded
     // console.log(document.querySelector('.stars-inner'))
-    
+
     comments.forEach(comment => {
         document.querySelector('.comments').innerHTML += tutorial.commentsTemplate(comment.content)
     })
@@ -102,13 +102,13 @@ function renderTutorialPage(response, user){
     const token = JSON.parse(localStorage.getItem('token'))
     const navbar = document.querySelector('.navigation')
     if (token) {
-            navbar.innerHTML = nav.loggedInNavTemplate()  
+            navbar.innerHTML = nav.loggedInNavTemplate()
         } else {
-            navbar.innerHTML = nav.navTemplate()  
+            navbar.innerHTML = nav.navTemplate()
         }
         events.navButtonListeners()
         events.addButtonListener()
-    }     
+    }
 
 
 function renderCreateTutorialPage() {
@@ -135,11 +135,11 @@ function renderMyTutorialsPage(response) {
     const token = JSON.parse(localStorage.getItem('token'))
     const navbar = document.querySelector('.navigation')
     if (token) {
-            navbar.innerHTML = nav.loggedInNavTemplate()  
+            navbar.innerHTML = nav.loggedInNavTemplate()
         } else {
-            navbar.innerHTML = nav.navTemplate()  
+            navbar.innerHTML = nav.navTemplate()
         }
-    events.navButtonListeners()    
+    events.navButtonListeners()
     const data = response.data.response
     data.forEach(item => {
         document.querySelector('.my-tutorials').innerHTML += myTutorials.tutorial(item)
@@ -161,16 +161,16 @@ function renderMyProfilePage(response) {
     const navbar = document.querySelector('.navigation')
     const userId = JSON.parse(localStorage.getItem('userId'))
     if (token) {
-            navbar.innerHTML = nav.loggedInNavTemplate()  
+            navbar.innerHTML = nav.loggedInNavTemplate()
         } else {
-            navbar.innerHTML = nav.navTemplate()  
+            navbar.innerHTML = nav.navTemplate()
         }
-        tutorials.forEach(tutorial => { 
+        tutorials.forEach(tutorial => {
             document.querySelector('.my-tutorials').innerHTML += profile.myTutorials(userId, tutorial)
         })
-        events.navButtonListeners() 
+        events.navButtonListeners()
         events.itemListeners()
-        events.addButtonListener()   
+        events.addButtonListener()
 }
 
 function renderSearchPage(response) {
@@ -179,9 +179,9 @@ function renderSearchPage(response) {
     const token = JSON.parse(localStorage.getItem('token'))
     const navbar = document.querySelector('.navigation')
     if (token) {
-            navbar.innerHTML = nav.loggedInNavTemplate()  
+            navbar.innerHTML = nav.loggedInNavTemplate()
         } else {
-            navbar.innerHTML = nav.navTemplate()  
+            navbar.innerHTML = nav.navTemplate()
         }
     events.navButtonListeners()
     const data = Array.from(response.data.response)

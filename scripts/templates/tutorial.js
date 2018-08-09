@@ -3,7 +3,7 @@ function tutorialPageTemplate(id, userId, title, description, instructorBio, ins
     <div data-id="${id}" data-userid="${userId}"class="container">
         <h1>${title}</h1>
         <h5>${description}</h5>
-        <button class="add-tutorial">Add</button>
+        <a class="btn-floating waves-effect waves-light red add-button"><i class="material-icons">add</i></a>
         <div class="videos"></div>
         <div class="instructor-info">
             <h2>Instructor</h2>

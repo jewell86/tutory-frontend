@@ -197,3 +197,18 @@ i.material-icons.close {
   display: flex;
   justify-content: center;
 }
+
+/* CARDS */
+
+.search-item {
+    height: 200px;
+    width: 200px
+}
+
+div.card-image {
+    height: 200px;
+    width: 200px;
+}
+
+.card-title {
+}

@@ -9,10 +9,13 @@ function myTutorialsPageTemplate() {
  
  function tutorial(item) {
 
-   return `  <div><img src="${item.img}" data-id="${item.id}" class="box search-item">
-             <p>${item.title}</p> 
+return ` <a href="#"><div class="card box search-item">
+             <div class="card-image">
+               <img class="search-item" src="${item.img}" data-type="tutorial" data-id="${item.id}" data-user-id="${item.users_id}">
+               <span class="card-title">${item.title}</span>
              </div>
-             `
+           </div></a>
+           `
  }
 
  module.exports = { myTutorialsPageTemplate, tutorial }

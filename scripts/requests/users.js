@@ -1,5 +1,14 @@
 const render = require('../render/render');
 
+
+function mainPageRequest() {
+    return axios.get(`http://localhost:5000/search/?q=`)
+    .then(response => {
+        const render = require('../render/render')
+        render.renderMainPage(response)
+    })
+    
+}
 function registerUserRequest(username, email, password, first_name, last_name) {
     return axios.post('http://localhost:5000/users/signup', {
             username,
@@ -61,6 +70,7 @@ function myTutorialsRequest(id, token) {
             }
         })
         .then(response => {
+            console.log(response)
             const render = require('../render/render')
             render.renderMyTutorialsPage(response)
         })
@@ -78,12 +88,29 @@ function myProfileRequest(id, token) {
         })
 }
 
+function addToWatchListRequest(users_id, tutorials_id, token) {
+    const body = { users_id, tutorials_id }
+    return axios.post(`http://localhost:5000/users-tutorials`, body, {
+        headers: {
+            authorization: `Bearer ${token}`
+        }
+    })
+    .then(response => {
+        const token = JSON.parse(localStorage.getItem('token'))
+        let userId = response.data.response.users_id
+        myTutorialsRequest(userId, token)
+    })
+}
+
+
 module.exports = {
+    mainPageRequest,
     registerUserRequest,
     loginUserRequest,
     viewProfileRequest,
     viewTutorialRequest,
     searchRequest,
     myTutorialsRequest,
-    myProfileRequest
+    myProfileRequest,
+    addToWatchListRequest,
 }

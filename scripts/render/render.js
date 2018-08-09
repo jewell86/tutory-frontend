@@ -3,19 +3,30 @@ const { create, home, nav, profile, search, register, tutorial, user, myTutorial
 const users = require('../requests/users').default
 
 
-function renderMainPage() {
+function renderMainPage(response) {
+    const main = document.querySelector('.main')
+    main.innerHTML = home.homePageTemplate()
     const token = JSON.parse(localStorage.getItem('token'))
     const navbar = document.querySelector('.navigation')
     if (token) {
-        navbar.innerHTML = nav.loggedInNavTemplate()  
+            navbar.innerHTML = nav.loggedInNavTemplate()  
         } else {
-        navbar.innerHTML = nav.navTemplate()  
+            navbar.innerHTML = nav.navTemplate()  
         }
+    const data = Array.from(response.data.response)
+    data.forEach(item => {
+        if (item.type === 'user'){
+            document.querySelector('.search-template').innerHTML += home.homeItemUser(item)
+        } else if (item.type === 'tutorial') {
+            document.querySelector('.search-template').innerHTML += home.homeItemTutorial(item)
+        }
+    })
     events.navButtonListeners()
-    const main = document.querySelector('.main')
-    main.innerHTML = home.homePageTemplate()
     events.itemListeners()
+    events.addButtonListener()
 }
+
+
 
 function renderRegisterPage() {
     const main = document.querySelector('.main')
@@ -50,11 +61,12 @@ function renderUsersProfilePage(response) {
             navbar.innerHTML = nav.navTemplate()  
         }
     events.navButtonListeners()
+    events.addButtonListener()
+
 }
 
 
 function renderTutorialPage(response, user){
-    console.log('hello')
     const id = response.data.response.tutorial.id
     const userId = response.data.response.tutorial.users_id
     const title = response.data.response.tutorial.title
@@ -78,6 +90,7 @@ function renderTutorialPage(response, user){
             navbar.innerHTML = nav.navTemplate()  
         }
         events.navButtonListeners()
+        events.addButtonListener()
     }     
 
 function renderCreateTutorialPage() {
@@ -110,14 +123,15 @@ function renderMyTutorialsPage(response) {
         }
     events.navButtonListeners()    
     const data = response.data.response
-    console.log(data)
-    document.querySelector('.my-tutorials').innerHTML += myTutorials.tutorial(data)
+    data.forEach(item => {
+        document.querySelector('.my-tutorials').innerHTML += myTutorials.tutorial(item)
+    })
     events.navButtonListeners()
     events.itemListeners()
+    events.addButtonListener()
 }
 
 function renderMyProfilePage(response) {
-    console.log(response)
     const image = response.data.response.photo_url
     const username = response.data.response.username
     const firstName = response.data.response.first_name
@@ -160,6 +174,8 @@ function renderSearchPage(response) {
     })
     events.navButtonListeners()
     events.itemListeners()
+    events.addButtonListener()
+
 }
 
 

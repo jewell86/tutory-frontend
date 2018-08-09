@@ -12,7 +12,7 @@ function navButtonListeners() {
         const render = require('./render')
         document.querySelector('.nav-home').addEventListener('click', (ev) => {
             ev.preventDefault()
-            render.renderMainPage()
+            users.mainPageRequest()
         })
         document.querySelector('.nav-create-tutorial').addEventListener('click', (ev) => {
             ev.preventDefault()
@@ -40,7 +40,7 @@ function navButtonListeners() {
             ev.preventDefault()
             localStorage.removeItem('token')
             localStorage.removeItem('userId')
-            render.renderMainPage()
+            users.mainPageRequest()
         })
         document.querySelector('.search').addEventListener('submit', (ev) => {
             ev.preventDefault()
@@ -51,7 +51,7 @@ function navButtonListeners() {
         const render = require('./render')
         document.querySelector('.nav-home').addEventListener('click', (ev) => {
             ev.preventDefault()
-            render.renderMainPage()
+            users.mainPageRequest()
         })
         document.querySelector('.nav-login').addEventListener('click', (ev) => {
             ev.preventDefault()
@@ -62,7 +62,7 @@ function navButtonListeners() {
                 if ( username && password ) {
                     users.loginUserRequest( username, password )
                     .then(response => {
-                        render.renderMainPage()
+                        users.mainPageRequest()
                         message.loginSuccess()
                     })
                 }
@@ -97,7 +97,7 @@ function registerSubmitButtonListener() {
         } else if ( first_name && last_name && username && email && password ) {
             users.registerUserRequest(  username, email, password, first_name, last_name )
             .then(response => {
-                render.renderMainPage()
+                users.mainPageRequest()
             })
             .then(response => {
                 message.registerSuccess()
@@ -115,14 +115,13 @@ function itemListeners() {
             ev.preventDefault()
             const type = event.target.dataset.type
             const id = event.target.dataset.id
-
             if (type === 'user') {
                 const users = require('../requests/users')
                 users.viewProfileRequest(id)
             } else if (type === 'tutorial') {
-                const userId = event.target.dataset.userid
+                const userId = event.target.dataset.userId
                 const users = require('../requests/users')
-            users.viewTutorialRequest(id, userId)
+                users.viewTutorialRequest(id, userId)
             }
          })
     })
@@ -138,7 +137,6 @@ function newTutorialListeners () {
       const thumbnail = document.getElementById('img').value
       const newTutorial = await tutorials.createTutorial(title, description, thumbnail, parseInt(users_id))
 
-      console.log(newTutorial)
 
       let i = 1
       while (i < 6) {
@@ -146,7 +144,6 @@ function newTutorialListeners () {
         if (video.value != '') {
           let videoURL = video.value
           const newVideo = await contents.createTutorialContent(parseInt(newTutorial.id), videoURL)
-          console.log(newVideo)
         }
         i++
       }
@@ -159,6 +156,23 @@ function newTutorialListeners () {
   })
 }
 
+function addButtonListener() {
+    document.querySelectorAll('.btn-floating').forEach(button => {
+        button.addEventListener('click', (ev) => {
+            ev.preventDefault()
+            const token = localStorage.getItem('token')
+            const users_id = localStorage.getItem('userId')
+            const tutorials_id = event.target.parentNode.parentNode.children[0].children[0].dataset.id
+            if (token) {
+                const users = require('../requests/users')
+                users.addToWatchListRequest(users_id, tutorials_id, token)
+            } else {
+                const render = require('./render')
+                render.renderRegisterPage()
+            }
+        })
+    })
+}
 
 
 
@@ -166,4 +180,5 @@ function newTutorialListeners () {
 
 
 
-module.exports = { navButtonListeners, registerSubmitButtonListener, itemListeners, newTutorialListeners }
+
+module.exports = { navButtonListeners, registerSubmitButtonListener, itemListeners, newTutorialListeners, addButtonListener, }

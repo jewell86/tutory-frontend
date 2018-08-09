@@ -164,21 +164,26 @@ function renderMyProfilePage(response) {
     const lastName = response.data.response.last_name
     const aboutMe = response.data.response.about_me
     const tutorials = response.data.response.myTutorials
+
     document.querySelector('.main').innerHTML = profile.viewProfilePageTemplate(image, username, firstName, lastName, aboutMe)
+
     const token = JSON.parse(localStorage.getItem('token'))
     const navbar = document.querySelector('.navigation')
     const userId = JSON.parse(localStorage.getItem('userId'))
+
     if (token) {
-            navbar.innerHTML = nav.loggedInNavTemplate()
-        } else {
-            navbar.innerHTML = nav.navTemplate()
-        }
-        tutorials.forEach(tutorial => {
-            document.querySelector('.my-tutorials').innerHTML += profile.myTutorials(userId, tutorial)
-        })
-        events.navButtonListeners()
-        events.itemListeners()
-        events.addButtonListener()
+      navbar.innerHTML = nav.loggedInNavTemplate()
+    } else {
+      navbar.innerHTML = nav.navTemplate()
+    }
+
+    tutorials.forEach(tutorial => {
+      document.querySelector('.my-tutorials').innerHTML += profile.myTutorials(userId, tutorial)
+    })
+
+    events.navButtonListeners()
+    events.itemListeners()
+    events.addButtonListener()
 }
 
 function renderSearchPage(response) {

@@ -155,6 +155,7 @@ function renderMyTutorialsPage(response) {
         }
     events.navButtonListeners()
     const data = response.data.response
+    console.log(data.response.data)
     data.forEach(item => {
         document.querySelector('.my-tutorials').innerHTML += myTutorials.tutorial(item)
     })
@@ -184,6 +185,7 @@ function renderMyProfilePage(response) {
     }
 
     tutorials.forEach(tutorial => {
+      
       document.querySelector('.my-tutorials').innerHTML += profile.myTutorials(userId, tutorial)
     })
 

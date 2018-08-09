@@ -1,6 +1,7 @@
 const events = require('./event-listeners')
-const { create, home, nav, profile, search, register, tutorial, user, myTutorials } = require('../templates')
+const { comment, create, home, nav, profile, search, register, tutorial, user, myTutorials } = require('../templates')
 const users = require('../requests/users').default
+const tutorialReq = require('../requests/tutorials')
 
 
 function renderMainPage() {
@@ -54,9 +55,6 @@ function renderUsersProfilePage(response) {
 
 
 function renderTutorialPage(response, user){
-  console.log(response)
-  console.log(user)
-
   const id = response.data.response.tutorial.id
   const userId = response.data.response.tutorial.users_id
   const title = response.data.response.tutorial.title
@@ -67,15 +65,53 @@ function renderTutorialPage(response, user){
   const videos = response.data.response.tutorial.urls
 
   document.querySelector('.main').innerHTML = tutorial.tutorialPageTemplate(id, userId, title, description, instructorBio, instructorImage)
-  comments.forEach(comment => {
-    console.log(comment)
-    axios.get(`http://localhost:5000/users/${comment.users_id}`)
+  comments.forEach(async (userComment) => {
+    try {
+      axios.get(`http://localhost:5000/users/${userComment.users_id}`)
         .then(response => {
-          document.querySelector('.comments').innerHTML += tutorial.commentsTemplate(comment.content, response.data.response)
+          document.querySelector('.comments').innerHTML += tutorial.commentsTemplate(userComment.content, response.data.response)
         })
-    // document.querySelector('.comments').innerHTML += tutorial.commentsTemplate(comment.content)
+    } catch (e) {
+      throw new Error(e)
+    }
   })
-  // add btn under last comment
+  document.querySelector('.add-comment').addEventListener('click', (ev) => {
+    ev.preventDefault()
+
+    document.querySelector('.container').innerHTML += comment.newCommentFormTemplate()
+    if (document.getElementById('new-tutorial-form').getAttribute('display') === 'none') document.getElementById('new-tutorial-form').removeAttribute('display')
+
+    document.querySelector('.create-comment-btn').addEventListener('click', async (ev) => {
+      ev.preventDefault()
+
+      try {
+        const users_id = localStorage.getItem('userId')
+        const tutorials_id = id
+        const content = document.querySelector('.comment-content').value
+
+        const newComment = await tutorialReq.createTutorialComment(parseInt(users_id), parseInt(tutorials_id), content)
+
+        const user = await axios.get(`http://localhost:5000/users/${newComment[0].users_id}`)
+          .then(response => { return response.data.response })
+
+        document.querySelector('.comments').innerHTML = ''
+
+        const updatedComments = await axios.get(`http://localhost:5000/tutorials/${id}`).then(response => { return response.data.response })
+
+        updatedComments.comments.forEach(async (userComment) => {
+          try {
+            axios.get(`http://localhost:5000/users/${userComment.users_id}`)
+              .then(response => {
+                document.querySelector('.comments').innerHTML += tutorial.commentsTemplate(userComment.content, response.data.response)
+                document.getElementById('new-tutorial-form').style.display = 'none'
+              })
+          } catch (e) {
+            throw new Error(e)
+          }
+        })
+      } catch (e) { throw new Error(e) }
+    })
+  })
   videos.forEach(video => { document.querySelector('.videos').innerHTML += tutorial.videosTemplate(video)})
 
   const token = JSON.parse(localStorage.getItem('token'))
@@ -102,8 +138,6 @@ function renderCreateTutorialPage() {
     events.navButtonListeners()
   }
 }
-
-
 
 function renderMyTutorialsPage(response) {
     const main = document.querySelector('.main')

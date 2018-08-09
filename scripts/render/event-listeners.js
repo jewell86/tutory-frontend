@@ -202,7 +202,4 @@ function addComment (comment, id) {
   })
 }
 
-
-
-
 module.exports = { navButtonListeners, registerSubmitButtonListener, itemListeners, newTutorialListeners, addButtonListener, addComment }

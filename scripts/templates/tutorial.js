@@ -15,7 +15,12 @@ function tutorialPageTemplate(id, userId, title, description, instructorBio, ins
         </div>
         <h3>COMMENTS</h3>
 
-        <div class="comments"></div>
+        <div class="comments-div">
+          <div class="comments"></div>
+          <div class="add-comment-btn-div">
+            <button class="add-comment">Add Comment</button>
+          </div>
+        </div>
     </div>
     `
 }

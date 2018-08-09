@@ -7,9 +7,9 @@ function renderMainPage() {
     const token = JSON.parse(localStorage.getItem('token'))
     const navbar = document.querySelector('.navigation')
     if (token) {
-        navbar.innerHTML = nav.loggedInNavTemplate()  
+        navbar.innerHTML = nav.loggedInNavTemplate()
         } else {
-        navbar.innerHTML = nav.navTemplate()  
+        navbar.innerHTML = nav.navTemplate()
         }
     events.navButtonListeners()
     const main = document.querySelector('.main')
@@ -23,9 +23,9 @@ function renderRegisterPage() {
     const token = JSON.parse(localStorage.getItem('token'))
     const navbar = document.querySelector('.navigation')
     if (token) {
-            navbar.innerHTML = nav.loggedInNavTemplate()  
+            navbar.innerHTML = nav.loggedInNavTemplate()
         } else {
-            navbar.innerHTML = nav.navTemplate()  
+            navbar.innerHTML = nav.navTemplate()
         }
     events.navButtonListeners()
     events.registerSubmitButtonListener()
@@ -45,40 +45,47 @@ function renderUsersProfilePage(response) {
     const token = JSON.parse(localStorage.getItem('token'))
     const navbar = document.querySelector('.navigation')
     if (token) {
-            navbar.innerHTML = nav.loggedInNavTemplate()  
+            navbar.innerHTML = nav.loggedInNavTemplate()
         } else {
-            navbar.innerHTML = nav.navTemplate()  
+            navbar.innerHTML = nav.navTemplate()
         }
     events.navButtonListeners()
 }
 
 
 function renderTutorialPage(response, user){
-    console.log('hello')
-    const id = response.data.response.tutorial.id
-    const userId = response.data.response.tutorial.users_id
-    const title = response.data.response.tutorial.title
-    const description = response.data.response.tutorial.description
-    const instructorBio = user.data.response.about_me
-    const instructorImage = user.data.response.photo_url
-    const comments = response.data.response.comments
-    const videos = response.data.response.tutorial.urls
-    document.querySelector('.main').innerHTML = tutorial.tutorialPageTemplate(id, userId, title, description, instructorBio, instructorImage)
-    comments.forEach(comment => {
-        document.querySelector('.comments').innerHTML += tutorial.commentsTemplate(comment.content)
-    })
-    videos.forEach(video => {
-        document.querySelector('.videos').innerHTML += tutorial.videosTemplate(video)
-    })
-    const token = JSON.parse(localStorage.getItem('token'))
-    const navbar = document.querySelector('.navigation')
-    if (token) {
-            navbar.innerHTML = nav.loggedInNavTemplate()  
-        } else {
-            navbar.innerHTML = nav.navTemplate()  
-        }
-        events.navButtonListeners()
-    }     
+  console.log(response)
+  console.log(user)
+
+  const id = response.data.response.tutorial.id
+  const userId = response.data.response.tutorial.users_id
+  const title = response.data.response.tutorial.title
+  const description = response.data.response.tutorial.description
+  const instructorBio = user.data.response.about_me
+  const instructorImage = user.data.response.photo_url
+  const comments = response.data.response.comments
+  const videos = response.data.response.tutorial.urls
+
+  document.querySelector('.main').innerHTML = tutorial.tutorialPageTemplate(id, userId, title, description, instructorBio, instructorImage)
+  comments.forEach(comment => {
+    console.log(comment)
+    axios.get(`http://localhost:5000/users/${comment.users_id}`)
+        .then(response => {
+          document.querySelector('.comments').innerHTML += tutorial.commentsTemplate(comment.content, response.data.response)
+        })
+    // document.querySelector('.comments').innerHTML += tutorial.commentsTemplate(comment.content)
+  })
+  // add btn under last comment
+  videos.forEach(video => { document.querySelector('.videos').innerHTML += tutorial.videosTemplate(video)})
+
+  const token = JSON.parse(localStorage.getItem('token'))
+  const navbar = document.querySelector('.navigation')
+
+  if (token) navbar.innerHTML = nav.loggedInNavTemplate()
+  else navbar.innerHTML = nav.navTemplate()
+
+  events.navButtonListeners()
+}
 
 function renderCreateTutorialPage() {
   const main = document.querySelector('.main')
@@ -104,11 +111,11 @@ function renderMyTutorialsPage(response) {
     const token = JSON.parse(localStorage.getItem('token'))
     const navbar = document.querySelector('.navigation')
     if (token) {
-            navbar.innerHTML = nav.loggedInNavTemplate()  
+            navbar.innerHTML = nav.loggedInNavTemplate()
         } else {
-            navbar.innerHTML = nav.navTemplate()  
+            navbar.innerHTML = nav.navTemplate()
         }
-    events.navButtonListeners()    
+    events.navButtonListeners()
     const data = response.data.response
     console.log(data)
     document.querySelector('.my-tutorials').innerHTML += myTutorials.tutorial(data)
@@ -128,12 +135,12 @@ function renderMyProfilePage(response) {
     const token = JSON.parse(localStorage.getItem('token'))
     const navbar = document.querySelector('.navigation')
     if (token) {
-            navbar.innerHTML = nav.loggedInNavTemplate()  
+            navbar.innerHTML = nav.loggedInNavTemplate()
         } else {
-            navbar.innerHTML = nav.navTemplate()  
+            navbar.innerHTML = nav.navTemplate()
         }
-    events.navButtonListeners()    
-    tutorials.forEach(tutorial => { 
+    events.navButtonListeners()
+    tutorials.forEach(tutorial => {
         document.querySelector('.my-tutorials').innerHTML += profile.myTutorials(tutorial)
     })
 
@@ -145,9 +152,9 @@ function renderSearchPage(response) {
     const token = JSON.parse(localStorage.getItem('token'))
     const navbar = document.querySelector('.navigation')
     if (token) {
-            navbar.innerHTML = nav.loggedInNavTemplate()  
+            navbar.innerHTML = nav.loggedInNavTemplate()
         } else {
-            navbar.innerHTML = nav.navTemplate()  
+            navbar.innerHTML = nav.navTemplate()
         }
     events.navButtonListeners()
     const data = Array.from(response.data.response)

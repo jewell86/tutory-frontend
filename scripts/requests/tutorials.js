@@ -1,7 +1,7 @@
 const render = require('../render/render')
 
 function createTutorial(title, description=null, img, users_id) {
-  const token = JSON.parse(localStorage.getItem('token'))
+  const token = localStorage.getItem('token')
 
   return axios({
     method: 'post',
@@ -17,7 +17,7 @@ function createTutorial(title, description=null, img, users_id) {
 }
 
 function createTutorialComment (users_id, tutorials_id, content) {
-  const token = JSON.parse(localStorage.getItem('token'))
+  const token = localStorage.getItem('token')
 
   return axios({
     method: 'post',

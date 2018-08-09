@@ -6,7 +6,7 @@ function myTutorialsPageTemplate() {
  </div>
  `
  }
- 
+
  function tutorial(item) {
 
 return ` <a href="#"><div class="card box">

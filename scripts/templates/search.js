@@ -8,22 +8,21 @@ function searchPageTemplate() {
 `
 }
 
-// function searchItemUser(item) {
-//   return `  <img src="${item.photo_url}" data-type="${item.type} "data-id="${item.id}" class="box search-item">
-//             <p>${item.username}</p> 
-
-//             `
-// }
 
 function searchItemTutorial(item){
-    return `  <img src="${item.photo_url}" data-type="${item.type}" data-id="${item.id}" class="box search-item">
-    <p>${item.title}</p> `
-    
+    return ` <a href="#"><div class="card box">
+    <div class="card-image">
+      <img class="search-item" src="${item.img}" data-type="${item.type}" data-id="${item.id}" data-user-id="${item.users_id}">
+      <span class="card-title">${item.title}</span>
+      <a class="btn-floating halfway-fab waves-effect waves-light red add-button"><i class="material-icons">add</i></a>
+    </div>
+  </div></a>
+  `
 }
 
 function searchItemUser(item) {
     
- return ` <a href="#"><div class="card box search-item">
+ return ` <a href="#"><div class="card box">
     <div class="card-image">
       <img class="search-item" src="${item.photo_url}" data-type="${item.type}" data-id="${item.id}">
       <span class="card-title">${item.username}</span>

@@ -23,7 +23,6 @@ function loggedInNavTemplate() {
     </div>
     </nav>
     </div>
-    <div class="alerts"></div>
 
 `
 }   
@@ -74,7 +73,6 @@ function navTemplate() {
       </ul>
     </div>
     </nav>
-    <div class="alerts"></div>
 
      
     

@@ -82,6 +82,7 @@ function myProfileRequest(id, token) {
             }
         })
         .then(response => {
+            console.log(response)
             const render = require('../render/render')
             render.renderMyProfilePage(response)
         })

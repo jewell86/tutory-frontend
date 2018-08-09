@@ -62,9 +62,10 @@ function renderUsersProfilePage(response) {
     const lastName = response.data.response.last_name
     const aboutMe = response.data.response.about_me
     const tutorials = response.data.response.myTutorials
+    const userId = response.data.response.id
     document.querySelector('.main').innerHTML = profile.viewProfilePageTemplate(image, username, firstName, lastName, aboutMe)
     tutorials.forEach(tutorial => {
-        document.querySelector('.my-tutorials').innerHTML += profile.myTutorials(tutorial)
+        document.querySelector('.my-tutorials').innerHTML += profile.myTutorials(tutorial, userId)
     })
     const token = JSON.parse(localStorage.getItem('token'))
     const navbar = document.querySelector('.navigation')
@@ -75,7 +76,7 @@ function renderUsersProfilePage(response) {
         }
     events.navButtonListeners()
     events.addButtonListener()
-
+    events.itemListeners()    
 }
 
 
@@ -113,6 +114,7 @@ function addCommentsToCommentsDiv (comments, hideForm=false) {
     try {
       axios.get(`http://localhost:5000/users/${userComment.users_id}`)
         .then(response => {
+            console.log(response)
           document.querySelector('.comments').innerHTML += tutorial.commentsTemplate(userComment.content, response.data.response)
           if (hideForm) document.getElementById('new-tutorial-form').style.display = 'none'
         })

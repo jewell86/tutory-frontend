@@ -1,4 +1,5 @@
 const render = require('../render/render');
+const messages = require('../render/messages')
 
 
 function mainPageRequest(type) {
@@ -30,9 +31,11 @@ function loginUserRequest(username, password) {
             password
         })
         .then(response => {
+            console.log(response)
             localStorage.setItem('token', response.data.token)
             localStorage.setItem('userId', response.data.user_id)
         })
+        // .catch(e => messages.unsuccessfulLogin())
 }
 
 function viewProfileRequest(id) {

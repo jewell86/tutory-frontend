@@ -68,6 +68,8 @@ function navButtonListeners() {
                     .then(response => {
                         users.mainPageRequest('login')
                     })
+                } else {
+                    message.unsuccessfulLogin()
                 }
             })
         })
@@ -111,7 +113,6 @@ function registerSubmitButtonListener() {
 function itemListeners() {
   document.querySelectorAll('.search-item').forEach(item => {
     item.addEventListener('click', (ev) => {
-        console.log('hi')
       ev.preventDefault()
       const type = event.target.dataset.type
       const id = event.target.dataset.id
@@ -203,16 +204,16 @@ function tutorialAddButtonListener() {
 function addComment (comment, id) {
   document.querySelector('.add-comment').addEventListener('click', (ev) => {
     ev.preventDefault()
-
-    document.querySelector('.container').innerHTML += comment.newCommentFormTemplate()
-    if (document.getElementById('new-tutorial-form').getAttribute('display') === 'none') document.getElementById('new-tutorial-form').removeAttribute('display')
+    // console.log(document.getElementById('new-tutorial-form'))
+    // document.querySelector('.container').innerHTML += comment.newCommentFormTemplate()
+    // if (document.querySelector('#new-tutorial-form').getAttribute('display') === 'none') document.getElementById('new-tutorial-form').removeAttribute('display')
 
     document.querySelector('.create-comment-btn').addEventListener('click', async (ev) => {
       ev.preventDefault()
 
+      const users_id = localStorage.getItem('userId')
+      const tutorials_id = id
       try {
-        const users_id = localStorage.getItem('userId')
-        const tutorials_id = id
         const content = document.querySelector('.comment-content').value
         const newComment = await tutorials.createTutorialComment(parseInt(users_id), parseInt(tutorials_id), content)
 
@@ -225,6 +226,7 @@ function addComment (comment, id) {
         const render = require('./render')
         render.addCommentsToCommentsDiv(updatedComments.comments, true)
       } catch (e) { throw new Error(e) }
+      users.viewTutorialRequest(tutorials_id, uses_id)
     })
   })
 }

@@ -21,6 +21,12 @@ function loginSuccess(){
     <strong>You are logged in!</strong></div> `
 }
 
+function unsuccessfulLogin() {
+    document.querySelector('.alerts').innerHTML = ``
+    document.querySelector('.alerts').innerHTML =`<div class="alert alert-success">
+    <strong>Please provide a username and password</strong></div> `
+}
+
 function logoutSuccess() {
     document.querySelector('.alerts').innerHTML = ``
     document.querySelector('.alerts').innerHTML =`<div class="alert alert-success logout">
@@ -30,4 +36,4 @@ function logoutSuccess() {
 /* <div class="alert alert-success hide">
 <strong></strong> */
 
-module.exports = { passwordsMatch, allFieldsRequired, registerSuccess, loginSuccess, logoutSuccess }
+module.exports = { passwordsMatch, allFieldsRequired, registerSuccess, loginSuccess, unsuccessfulLogin, logoutSuccess }

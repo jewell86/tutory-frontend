@@ -1,6 +1,7 @@
 const users = require('../requests/users')
 const tutorials = require('../requests/tutorials')
 const profile = require('../templates/profile')
+const tutorial = require('../templates/tutorial')
 const contents = require('../requests/contents')
 const render = require('./render')
 const message = require('./messages')
@@ -137,7 +138,6 @@ function newTutorialListeners () {
       const thumbnail = document.getElementById('img').value
       const newTutorial = await tutorials.createTutorial(title, description, thumbnail, parseInt(users_id))
 
-
       let i = 1
       while (i < 6) {
         const video = document.getElementById(`video${i}`)
@@ -148,10 +148,10 @@ function newTutorialListeners () {
         i++
       }
 
-      let main = document.querySelector('.main')
-      main.innerHTML = profile.profilePageTemplate()
+      const creator = await axios.get(`http://localhost:5000/users/${users_id}`).then(response => { return response.data.response })
+      document.querySelector('.main').innerHTML = tutorial.tutorialPageTemplate(newTutorial.id, users_id, title, description, creator.about_me, thumbnail)
     } catch (e) {
-      throw new Error('Failed to create tutorial')
+      throw new Error(e)
     }
   })
 }

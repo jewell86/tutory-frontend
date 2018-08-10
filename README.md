@@ -63,3 +63,4 @@ Tutory was built from the ground up, including a PostgreSql database, a Node & E
     -For more information, pleasee contact this project's developers, Branden Lowe, Nate Semmler or Jewell White at:   
 
     b.lowe333@gmail.com, ndsunc@gmail.com or jewellsmailbox@gmail.com 
+

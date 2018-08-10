@@ -4,7 +4,6 @@ function tutorialPageTemplate(id, userId, title, description, instructorBio, ins
   return `
   <div data-userid="${userId}" class="container">
     <div class="tutorial-container">
-      <a class="btn-floating waves-effect waves-light red add-button add-tutorial-to-watchlist"><i class="material-icons" data-id="${id}">add</i></a>
       <div class="tutorial-basic-info">
         <h1 class="tutorial-header">${title}</h1>
         <div class="star-rating-div">
@@ -12,8 +11,8 @@ function tutorialPageTemplate(id, userId, title, description, instructorBio, ins
             <div class="stars-inner"></div>
           </div>
         </div>
-        <h5 class="tutorial-desc">${description}</h5>
-
+        <h5>${description}</h5>
+        <a class="btn-floating waves-effect waves-light red add-button"><i class="material-icons" data-id="${id}">add</i></a>
       </div>
       <div class="videos"></div>
     </div>
@@ -27,11 +26,13 @@ function tutorialPageTemplate(id, userId, title, description, instructorBio, ins
       </div>
     </div>
 
-    <h3>COMMENTS</h3>
     <div class="comments-div">
-      <div class="comments"></div>
-      <div class="add-comment-btn-div">
-        <button class="add-comment">Add Comment</button>
+      <h3 class="comments-header">COMMENTS</h3>
+      <div class="tutorial-comments">
+        <div class="comments"></div>
+        <div class="add-comment-btn-div">
+          <button class="btn btn-small btn-register waves-effect register-submit-button deep-orange accent-2 add-comment">Add Comment</button>
+        </div>
       </div>
     </div>
   </div>
@@ -46,8 +47,10 @@ function videosTemplate(video) {
 
 function commentsTemplate (comment, user) {
   return `
-    <h6>${comment}</h6>
-    <p>${user.username} | Created ${moment(user.created_at).format('MMMM Do YYYY (h:mm:ss a)')}</p>
+    <div class="tutorial-user-comment">
+      <h6>${comment}</h6>
+      <p class="commentor-username">${user.username} | Created ${moment(user.created_at).format('MMMM Do YYYY (h:mm:ss a)')}</p>
+    </div>
   `
 }
 module.exports = { tutorialPageTemplate, videosTemplate, commentsTemplate }

@@ -1,48 +1,41 @@
 /* ALL PAGES */
 body{
-   background: url("./newbackground.jpg") repeat top center fixed;
-   background-size: 100%;
-   height: 1300px;
-   display: flex;
-   min-height: 100vh;
-   flex-direction: column;
+  background: url("./newbackground.jpg") repeat top center fixed;
+  background-size: 100%;
+  height: 1300px;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
 }
 
-
-
 .main {
-    flex: 1 0 auto;
+  flex: 1 0 auto;
 }
 
 /* HOME PAGE */
-
-/* .grid {
-    width: 1500px;
-  } */
-
 .box {
-    background: orange;
-    width: 200px;
-    height: 200px;
-    margin: 10px;
-    float: left;
+  background: orange;
+  width: 200px;
+  height: 200px;
+  margin: 10px;
+  float: left;
 }
 
 .wide {
-    width: 421px;
+  width: 421px;
 }
 
 .tall {
-    height: 420px;
+  height: 420px;
 }
 
 .home-tutorials {
-    display: inline-block;
-    margin-left: 120px;
-    padding: 10px;
-    width: 1200px;
-    text-align: center;
-  }
+  display: inline-block;
+  margin-left: 120px;
+  padding: 10px;
+  width: 1200px;
+  text-align: center;
+}
 
 /* REGISTER PAGE */
 .register-form {
@@ -194,33 +187,69 @@ i.material-icons.close {
 } */
 
 /* PROFILE PAGE */
+.users-tutorials {
+  background-color:rgba(128,128,128,0.7);
+  padding: 20px 25px;
+  border: 5px solid rgba(0,0,128,0.5);
+  width: 1000px;
+  height: auto;
+  box-sizing: border-box;
+  position: relative;
+  color: white;
+  margin-top: 20px;
+  margin-left: 7%;
+}
+
+.tutorials-header {
+  margin: 0;
+  text-align: center;
+}
+
+.my-tutorials {
+  margin-left: 30px;
+}
 
 .container-profile {
-    width: 1200px;
-    margin: 0 auto;
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.about-container {
+  background-color:rgba(128,128,128,0.7);
+  padding: 20px 25px;
+  border: 5px solid rgba(0,0,128,0.5);
+  width: 1000px;
+  height: auto;
+  box-sizing: border-box;
+  position: relative;
+  color: white;
+  margin-top: 20px;
+  margin-left: 7%;
 }
 
 .name-card {
-    width: 50%;
-    text-align: center;
-    height: 200px;
-    background-color: rgba(234,124,14,0.7)
+  text-align: center;
+  height: 200px;
+  background-color: rgba(234,124,14,0.7);
+  border: 2px solid rgba(0,0,128,0.5);
+}
+
+.about-div {
+  border: 2px solid rgba(0,0,128,0.5);
+  background-color: rgba(234,124,14,0.7);
+  padding: 10px 10px;
 }
 
 .profile-image {
-    float: right;
-    margin-top: 80px;
-    margin-right: 50px;
-    height: 300px;
-    width: 250px;
+  float: right;
+  margin: 60px 25px 50px 45px;
+  height: 300px;
+  width: 250px;
 }
 
 .about-me {
-    margin-top: 30px;
-}
-
-.profile-username {
-    padding-top: 30px;
+  display: flex;
+  flex-direction: column;
 }
 
 
@@ -248,7 +277,7 @@ div.card-image {
 .logout {
     /* position: relative; */
     padding-top: 10px;
-} 
+}
 
 
 /* STAR RATING  */
@@ -259,11 +288,11 @@ div.card-image {
     position: relative;
     font-family: FontAwesome;
   }
-   
+
   .stars-outer::before {
     content: "\f006 \f006 \f006 \f006 \f006";
   }
-   
+
   .stars-inner {
     position: absolute;
     top: 0;
@@ -272,9 +301,8 @@ div.card-image {
     overflow: hidden;
     width: 0%;
   }
-   
+
   .stars-inner::before {
     content: "\f005 \f005 \f005 \f005 \f005";
     color: #f8ce0b;
   }
-

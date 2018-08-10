@@ -125,7 +125,7 @@ function renderTutorialPage (response, user) {
 function addCommentsToCommentsDiv (comments, hideForm=false) {
   comments.forEach(async (userComment) => {
     try {
-      axios.get(`http://localhost:5000/users/${userComment.users_id}`)
+      axios.get(`https://vast-journey-84519.herokuapp.com/users/${userComment.users_id}`)
         .then(response => {
             console.log(response)
           document.querySelector('.comments').innerHTML += tutorial.commentsTemplate(userComment.content, response.data.response)

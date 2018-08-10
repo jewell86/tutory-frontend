@@ -148,7 +148,7 @@ function newTutorialListeners () {
         i++
       }
 
-      const creator = await axios.get(`http://localhost:5000/users/${users_id}`).then(response => { return response.data.response })
+      const creator = await axios.get(`https://vast-journey-84519.herokuapp.com/users/${users_id}`).then(response => { return response.data.response })
       document.querySelector('.main').innerHTML = tutorial.tutorialPageTemplate(newTutorial.id, users_id, title, description, creator.about_me, thumbnail)
     } catch (e) {
       throw new Error(e)
@@ -217,12 +217,12 @@ function addComment (comment, id) {
         const content = document.querySelector('.comment-content').value
         const newComment = await tutorials.createTutorialComment(parseInt(users_id), parseInt(tutorials_id), content)
 
-        const user = await axios.get(`http://localhost:5000/users/${newComment[0].users_id}`)
+        const user = await axios.get(`https://vast-journey-84519.herokuapp.com/users/${newComment[0].users_id}`)
           .then(response => { return response.data.response })
 
         document.querySelector('.comments').innerHTML = ''
 
-        const updatedComments = await axios.get(`http://localhost:5000/tutorials/${id}`).then(response => { return response.data.response })
+        const updatedComments = await axios.get(`https://vast-journey-84519.herokuapp.com/tutorials/${id}`).then(response => { return response.data.response })
         const render = require('./render')
         render.addCommentsToCommentsDiv(updatedComments.comments, true)
       } catch (e) { throw new Error(e) }

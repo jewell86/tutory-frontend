@@ -3,7 +3,7 @@ const messages = require('../render/messages')
 
 
 function mainPageRequest(type) {
-    return axios.get(`http://localhost:5000/search/?q=`)
+    return axios.get(`https://vast-journey-84519.herokuapp.com/search/?q=`)
     .then(response => {
         const render = require('../render/render')
         render.renderMainPage(response, type)
@@ -11,7 +11,7 @@ function mainPageRequest(type) {
 
 }
 function registerUserRequest(username, email, password, first_name, last_name) {
-    return axios.post('http://localhost:5000/users/signup', {
+    return axios.post('https://vast-journey-84519.herokuapp.com/users/signup', {
             username,
             email,
             password,
@@ -26,7 +26,7 @@ function registerUserRequest(username, email, password, first_name, last_name) {
 }
 
 function loginUserRequest(username, password) {
-    return axios.post('http://localhost:5000/users/login', {
+    return axios.post('https://vast-journey-84519.herokuapp.com/users/login', {
             username,
             password
         })
@@ -39,7 +39,7 @@ function loginUserRequest(username, password) {
 }
 
 function viewProfileRequest(id) {
-    axios.get(`http://localhost:5000/users/${id}`)
+    axios.get(`https://vast-journey-84519.herokuapp.com/users/${id}`)
         .then(response => {
             const render = require('../render/render')
             render.renderUsersProfilePage(response)
@@ -47,9 +47,9 @@ function viewProfileRequest(id) {
 }
 
 function viewTutorialRequest(id, userId) {
-  axios.get(`http://localhost:5000/tutorials/${id}`)
+  axios.get(`https://vast-journey-84519.herokuapp.com/tutorials/${id}`)
     .then(response => {
-      axios.get(`http://localhost:5000/users/${userId}`)
+      axios.get(`https://vast-journey-84519.herokuapp.com/users/${userId}`)
         .then(user => {
           const render = require('../render/render')
           render.renderTutorialPage(response, user)
@@ -59,7 +59,7 @@ function viewTutorialRequest(id, userId) {
 }
 
 function searchRequest(query) {
-    return axios.get(`http://localhost:5000/search/?q=${query}`)
+    return axios.get(`https://vast-journey-84519.herokuapp.com/search/?q=${query}`)
         .then(response => {
             const render = require('../render/render')
             render.renderSearchPage(response)
@@ -67,7 +67,7 @@ function searchRequest(query) {
 }
 
 function myTutorialsRequest(id, token) {
-    return axios.get(`http://localhost:5000/users/${id}/myTutorials`, {
+    return axios.get(`https://vast-journey-84519.herokuapp.com/users/${id}/myTutorials`, {
             headers: {
                 authorization: `Bearer ${token}`
             }
@@ -79,7 +79,7 @@ function myTutorialsRequest(id, token) {
 }
 
 function myProfileRequest(id, token) {
-    return axios.get(`http://localhost:5000/users/${id}/myProfile`, {
+    return axios.get(`https://vast-journey-84519.herokuapp.com/users/${id}/myProfile`, {
             headers: {
                 authorization: `Bearer ${token}`
             }
@@ -92,7 +92,7 @@ function myProfileRequest(id, token) {
 
 function addToWatchListRequest(users_id, tutorials_id, token) {
     const body = { users_id, tutorials_id }
-    return axios.post(`http://localhost:5000/users-tutorials`, body, {
+    return axios.post(`https://vast-journey-84519.herokuapp.com/users-tutorials`, body, {
         headers: {
             authorization: `Bearer ${token}`
         }

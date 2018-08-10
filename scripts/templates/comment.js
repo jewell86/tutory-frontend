@@ -6,7 +6,7 @@
 
 function newCommentFormTemplate () {
   return `
-    <form class="col s12" id="new-tutorial-form">
+    <form class="col s12" id="new-tutorial-comment-form">
       <div class="row">
         <div class="input-field col s12">
           <textarea id="content" class="comment-content"></textarea>

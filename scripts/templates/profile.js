@@ -38,7 +38,7 @@ function viewProfilePageTemplate( image, username, firstName, lastName, aboutMe 
 
 
 function myTutorials(id, item) {
-    return ` <a href="#"><div class="card box z-depth-3">
+    return ` <a href="#"><div class="card box z-depth-3 search-item">
     <div class="card-image z-depth-3">
       <img class="search-item" src="${item.img}" data-type="tutorial" data-id="${item.id}" data-user-id="${id}">
       <span class="card-title">${item.title}</span>

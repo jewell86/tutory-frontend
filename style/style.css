@@ -263,6 +263,13 @@ i.material-icons.close {
 }
 
 /* TUTORIALS PAGE */
+.my-tutz {
+    text-align: center;
+    height: 60px;
+    /* width: 50%; */
+    background-color: rgba(234,124,14,0.7);
+    border: 2px solid rgba(0,0,128,0.5);
+  }
 .instructor-info, .tutorial-container, .comments-div {
   background-color:rgba(128,128,128,0.7);
   padding: 20px 20px;

@@ -75,7 +75,7 @@ function renderUsersProfilePage(response) {
     tutorials.forEach(tutorial => {
         document.querySelector('.my-tutorials').innerHTML += profile.myTutorials(userId, tutorial)
     })
-    const token = JSON.parse(localStorage.getItem('token'))
+    const token = localStorage.getItem('token')
     const navbar = document.querySelector('.navigation')
     if (token) {
             navbar.innerHTML = nav.loggedInNavTemplate()

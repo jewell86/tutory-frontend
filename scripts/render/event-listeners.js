@@ -111,11 +111,10 @@ function registerSubmitButtonListener() {
 function itemListeners() {
   document.querySelectorAll('.search-item').forEach(item => {
     item.addEventListener('click', (ev) => {
+        console.log('hi')
       ev.preventDefault()
-
       const type = event.target.dataset.type
       const id = event.target.dataset.id
-
       if (type === 'user') {
         const users = require('../requests/users')
         users.viewProfileRequest(id)

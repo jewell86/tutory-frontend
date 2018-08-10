@@ -1,7 +1,8 @@
 function myTutorialsPageTemplate() {
     return ` <div class="home-tutorials my-tutorial-template">
+    <h3 class="my-tutz">My Watchlist</h3>
     <div class="grid">
-    <p class="my-tutorials">My Tutorials</p>
+    <p class="my-tutorials"></p>
     </div>
  </div>
  `

@@ -12,7 +12,7 @@ function tutorialPageTemplate(id, userId, title, description, instructorBio, ins
           </div>
         </div>
         <h5>${description}</h5>
-        <a class="btn-floating waves-effect waves-light red add-button"><i class="material-icons" data-id="${id}">add</i></a>
+        <a class="tut-add-btn btn-floating waves-effect waves-light red"><i class="material-icons" data-id="${id}">add</i></a>
       </div>
       <div class="videos"></div>
     </div>

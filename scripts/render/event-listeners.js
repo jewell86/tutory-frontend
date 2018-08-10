@@ -150,6 +150,8 @@ function newTutorialListeners () {
 
       const creator = await axios.get(`http://localhost:5000/users/${users_id}`).then(response => { return response.data.response })
       document.querySelector('.main').innerHTML = tutorial.tutorialPageTemplate(newTutorial.id, users_id, title, description, creator.about_me, thumbnail)
+      navButtonListeners()
+      tutorialAddButtonListener()
     } catch (e) {
       throw new Error(e)
     }
@@ -204,9 +206,8 @@ function tutorialAddButtonListener() {
 function addComment (comment, id) {
   document.querySelector('.add-comment').addEventListener('click', (ev) => {
     ev.preventDefault()
-    // console.log(document.getElementById('new-tutorial-form'))
-    // document.querySelector('.container').innerHTML += comment.newCommentFormTemplate()
-    // if (document.querySelector('#new-tutorial-form').getAttribute('display') === 'none') document.getElementById('new-tutorial-form').removeAttribute('display')
+    document.querySelector('.container').innerHTML += comment.newCommentFormTemplate()
+    if (document.querySelector('#new-tutorial-form').getAttribute('display') === 'none') document.getElementById('new-tutorial-form').removeAttribute('display')
 
     document.querySelector('.create-comment-btn').addEventListener('click', async (ev) => {
       ev.preventDefault()
@@ -216,8 +217,8 @@ function addComment (comment, id) {
       try {
         const content = document.querySelector('.comment-content').value
         const newComment = await tutorials.createTutorialComment(parseInt(users_id), parseInt(tutorials_id), content)
-
-        const user = await axios.get(`http://localhost:5000/users/${newComment[0].users_id}`)
+        
+        await axios.get(`http://localhost:5000/users/${newComment[0].users_id}`)
           .then(response => { return response.data.response })
 
         document.querySelector('.comments').innerHTML = ''

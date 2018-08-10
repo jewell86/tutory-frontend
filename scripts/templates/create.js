@@ -1,6 +1,6 @@
 function createTutorialTemplate() {
   return `
-    <div class="container create-tutorials-form">
+    <div class="container create-tutorials-form register-form">
       <div class="row">
         <form class="col s12" id="new-tutorial-form">
           <div class="row">

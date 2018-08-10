@@ -2,6 +2,7 @@ const events = require('./event-listeners')
 const { comment, create, home, nav, profile, search, register, tutorial, user, myTutorials } = require('../templates')
 const users = require('../requests/users').default
 const message = require('./messages')
+const shuffle = require('lodash.shuffle')
 
 function renderMainPage(response, type) {
     if (window.scrollY) window.scroll(0, 0)
@@ -26,7 +27,8 @@ function renderMainPage(response, type) {
     }
 
     const data = Array.from(response.data.response)
-    data.forEach(item => {
+    const newData = shuffle(data)
+    newData.forEach(item => {
       if (item.type === 'user') {
         document.querySelector('.search-template').innerHTML += home.homeItemUser(item)
       } else if (item.type === 'tutorial') {
@@ -117,6 +119,7 @@ function renderTutorialPage (response, user) {
 
   events.navButtonListeners()
   events.addButtonListener()
+  
 }
 
 function addCommentsToCommentsDiv (comments, hideForm=false) {

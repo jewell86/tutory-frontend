@@ -10,7 +10,7 @@ function viewProfilePageTemplate( image, username, firstName, lastName, aboutMe 
     return ` <div class="container-profile">
     <div class="row">
         <div class="col s6 profile-column">
-            <img class="profile-image" src="${image}">
+            <img class="profile-image z-depth-3" src="${image}">
         </div>
 
         <div class="col s6 about-me">
@@ -40,8 +40,8 @@ function viewProfilePageTemplate( image, username, firstName, lastName, aboutMe 
 
 
 function myTutorials(id, item) {
-    return ` <a href="#"><div class="card box">
-    <div class="card-image">
+    return ` <a href="#"><div class="card box z-depth-3">
+    <div class="card-image z-depth-3">
       <img class="search-item" src="${item.img}" data-type="tutorial" data-id="${item.id}" data-user-id="${id}">
       <span class="card-title">${item.title}</span>
       <a class="btn-floating halfway-fab waves-effect waves-light red add-button"><i class="material-icons">add</i></a>

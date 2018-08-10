@@ -174,7 +174,7 @@ i.material-icons.close {
   margin-left: 7%;
 }
 
-.tutorials-header {
+.tutorials-header, .tutorial-desc {
   margin: 0;
   text-align: center;
 }
@@ -230,6 +230,12 @@ i.material-icons.close {
   height: 1px;
 }
 
+.add-tutorial-to-watchlist {
+  float: right;
+  top: 8px;
+  right: 8px;
+}
+
 /* TUTORIALS PAGE */
 .instructor-info, .tutorial-container {
   background-color:rgba(128,128,128,0.7);
@@ -266,6 +272,21 @@ i.material-icons.close {
   max-height: 300px;
   width: 250px;
   max-width: 250px;
+}
+
+.tutorial-basic-info {
+  text-align: center;
+  width: auto;
+  padding: 20px;
+  background-color: rgba(234,124,14,0.7);
+  border: 2px solid rgba(0,0,128,0.5);
+}
+
+.videos {
+  margin-top: 20px;
+  margin-left: 6%;
+  display: flex;
+  flex-direction: column;
 }
 
 /* CREATE TUTORIAL FORM */

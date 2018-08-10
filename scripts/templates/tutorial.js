@@ -4,14 +4,17 @@ function tutorialPageTemplate(id, userId, title, description, instructorBio, ins
   return `
   <div data-userid="${userId}" class="container">
     <div class="tutorial-container">
-      <h1 class="tutorial-header">${title}</h1>
-      <div class="star-rating-div">
-        <div class="stars-outer">
-          <div class="stars-inner"></div>
+      <a class="btn-floating waves-effect waves-light red add-button add-tutorial-to-watchlist"><i class="material-icons" data-id="${id}">add</i></a>
+      <div class="tutorial-basic-info">
+        <h1 class="tutorial-header">${title}</h1>
+        <div class="star-rating-div">
+          <div class="stars-outer">
+            <div class="stars-inner"></div>
+          </div>
         </div>
+        <h5 class="tutorial-desc">${description}</h5>
+
       </div>
-      <h5>${description}</h5>
-      <a class="btn-floating waves-effect waves-light red add-button"><i class="material-icons" data-id="${id}">add</i></a>
       <div class="videos"></div>
     </div>
 
@@ -37,7 +40,7 @@ function tutorialPageTemplate(id, userId, title, description, instructorBio, ins
 
 function videosTemplate(video) {
   return `
-    <iframe width="420" height="315" src="${video}" frameborder="0" allowfullscreen></iframe>
+    <iframe width="840" height="630" style="margin-bottom: 20px;" src="${video}" frameborder="0" allowfullscreen></iframe>
   `
 }
 

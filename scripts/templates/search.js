@@ -11,9 +11,9 @@ function searchPageTemplate() {
 
 
 function searchItemTutorial(item){
-    return ` <a href="#"><div class="card box">
+    return ` <a href="#"><div class="card box z-depth-3">
     <div class="card-image">
-      <img class="search-item" src="${item.img}" data-type="${item.type}" data-id="${item.id}" data-user-id="${item.users_id}">
+      <img class="search-item z-depth-3" src="${item.img}" data-type="${item.type}" data-id="${item.id}" data-user-id="${item.users_id}">
       <span class="card-title">${item.title}</span>
       <a class="btn-floating halfway-fab waves-effect waves-light red add-button"><i class="material-icons">add</i></a>
     </div>
@@ -25,8 +25,8 @@ function searchItemTutorial(item){
 
 function searchItemUser(item) {
 
- return ` <a href="#"><div class="card box">
-    <div class="card-image">
+ return ` <a href="#"><div class="card box z-depth-3">
+    <div class="card-image z-depth-3">
       <img class="search-item" src="${item.photo_url}" data-type="${item.type}" data-id="${item.id}">
       <span class="card-title">${item.username}</span>
     </div>

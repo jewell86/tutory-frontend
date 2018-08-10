@@ -7,10 +7,10 @@ function myTutorialsPageTemplate() {
  `
  }
 
- function tutorial(item) {
+function tutorial(item) {
 
-return ` <a href="#"><div class="card box">
-             <div class="card-image">
+return ` <a href="#"><div class="card box z-depth-3">
+             <div class="card-image z-depth-3">
                <img class="search-item" src="${item.img}" data-type="tutorial" data-id="${item.id}" data-user-id="${item.users_id}">
                <span class="card-title">${item.title}</span>
              </div>

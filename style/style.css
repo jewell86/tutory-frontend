@@ -230,6 +230,43 @@ i.material-icons.close {
   height: 1px;
 }
 
+/* TUTORIALS PAGE */
+.instructor-info, .tutorial-container {
+  background-color:rgba(128,128,128,0.7);
+  padding: 20px 20px;
+  border: 5px solid rgba(0,0,128,0.5);
+  width: 1000px;
+  height: auto;
+  box-sizing: border-box;
+  position: relative;
+  color: white;
+  margin-top: 20px;
+}
+
+.instructor-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.instructor-bio {
+  text-align: center;
+  width: 650px;
+  padding: 20px;
+  background-color: rgba(234,124,14,0.7);
+  border: 2px solid rgba(0,0,128,0.5);
+}
+
+.tutorial-header {
+  margin: 0;
+}
+
+.usr-img {
+  height: 300px;
+  max-height: 300px;
+  width: 250px;
+  max-width: 250px;
+}
 
 /* CREATE TUTORIAL FORM */
 .new-tutorial-btn-div {

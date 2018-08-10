@@ -21,15 +21,11 @@ Tutory was built from the ground up, including a PostgreSql database, a Node & E
 
 ### FEATURES
 
--Token Authorization ensures that only one user has access to their unique profile and watchlist
-
--Users are able to create tutorials in a matter of minutes
-
--Users can search for users or tutorials
-
--Users can add tutorials to their watchlist, and access the tutorials in this watchlist at any time
-
--Users can add comments to tutorials
+    -Token Authorization ensures that only one user has access to their unique profile and watchlist
+    -Users are able to create tutorials in a matter of minutes
+    -Users can search for users or tutorials
+    -Users can add tutorials to their watchlist, and access the tutorials in this watchlist at any time
+    -Users can add comments to tutorials
 
 
 ### TO INSTALL TUTORY
@@ -37,12 +33,13 @@ Tutory was built from the ground up, including a PostgreSql database, a Node & E
     -fork and clone this frontend repository onto your local machine
     -run 'npm install' in your terminal
     -run 'npm run dev'
-    -the previous step will open the frontend program in your browser using live-server, connected to the backend deployed with Heroku
+    -the previous step will open the frontend program in your browser using live-server, connected to the backend deployed  with Heroku
+    -the backend repo for Tutory can be found at <a href="https://github.com/jewell86/tutory-backend">Here</a>
 
 
 ### TO USE TUTORY ONLINE
 
-<a href="">Tutory Online!</a>
+<a href="http://tutory.surge.sh/">Tutory Online!</a>
 
 ### BUILT WITH
 

@@ -200,7 +200,7 @@ i.material-icons.close {
   margin-left: 7%;
 }
 
-.tutorials-header, .tutorial-desc {
+.tutorials-header, .tutorial-desc, .comments-header {
   margin: 0;
   text-align: center;
 }
@@ -263,7 +263,7 @@ i.material-icons.close {
 }
 
 /* TUTORIALS PAGE */
-.instructor-info, .tutorial-container {
+.instructor-info, .tutorial-container, .comments-div {
   background-color:rgba(128,128,128,0.7);
   padding: 20px 20px;
   border: 5px solid rgba(0,0,128,0.5);
@@ -273,6 +273,18 @@ i.material-icons.close {
   position: relative;
   color: white;
   margin-top: 20px;
+}
+
+.tutorial-comments {
+  background-color:rgba(128,128,128,0.4);
+  padding: 10px 10px;
+  border: 2px solid rgba(0,0,128,0.5);
+  width: auto;
+  height: auto;
+  box-sizing: border-box;
+  position: relative;
+  color: white;
+  margin-bottom: 10px;
 }
 
 .instructor-info {
@@ -321,6 +333,44 @@ i.material-icons.close {
   justify-content: center;
 }
 
+#new-tutorial-form {
+  background-color:rgba(128,128,128,0.7);
+  padding: 20px 20px;
+  border: 5px solid rgba(0,0,128,0.5);
+  width: 1000px;
+  height: auto;
+  box-sizing: border-box;
+  position: relative;
+  color: white;
+  margin-top: 20px;
+}
+
+#new-tutorial-form .input-field {
+  margin: 0px;
+}
+
+.new-comment-btn-div, .add-comment-btn-div {
+  display: flex;
+  justify-content: center;
+}
+
+#content {
+  background-color:rgba(255,255,255,0.2);
+}
+
+.create-comment-btn {
+  align-self: center;
+}
+
+.tutorial-user-comment {
+  border: 1px solid black;
+  margin: 5px 0 5px 0;
+  padding-left: 8px;
+}
+
+.commentor-username {
+  color: rgb(200, 200, 200)
+}
 
 /* CARDS */
 

@@ -73,7 +73,7 @@ function renderUsersProfilePage(response) {
     const userId = response.data.response.id
     document.querySelector('.main').innerHTML = profile.viewProfilePageTemplate(image, username, firstName, lastName, aboutMe)
     tutorials.forEach(tutorial => {
-        document.querySelector('.my-tutorials').innerHTML += profile.myTutorials(tutorial, userId)
+        document.querySelector('.my-tutorials').innerHTML += profile.myTutorials(userId, tutorial)
     })
     const token = JSON.parse(localStorage.getItem('token'))
     const navbar = document.querySelector('.navigation')
@@ -118,7 +118,7 @@ function renderTutorialPage (response, user) {
   else navbar.innerHTML = nav.navTemplate()
 
   events.navButtonListeners()
-  events.addButtonListener()
+  events.tutorialAddButtonListener()
   
 }
 

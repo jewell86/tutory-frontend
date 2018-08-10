@@ -75,7 +75,7 @@ function navButtonListeners() {
             ev.preventDefault()
             render.renderRegisterPage()
         })
-        document.querySelector('.search').addEventListener('submit', (ev) => {
+        document.querySelector('.search-button').addEventListener('click', (ev) => {
             ev.preventDefault()
             const query = document.querySelector('#search').value
             users.searchRequest( query )
@@ -157,46 +157,48 @@ function newTutorialListeners () {
 }
 
 function addButtonListener() {
-    document.querySelectorAll('.btn-floating').forEach(button => {
+    document.querySelectorAll('.add-button').forEach(button => {
         button.addEventListener('click', (ev) => {
             ev.preventDefault()
+            
             const token = localStorage.getItem('token')
-            const users_id = localStorage.getItem('userId')
-            if (event.target.parentnode) {
-                const tutorials_id = event.target.parentNode.parentNode.children[0].children[0].dataset.id
-            }
-            else {
-                tutorials_id = event.target.dataset.id
-            }     
-            if (token) {
-                const users = require('../requests/users')
-                users.addToWatchListRequest(users_id, tutorials_id, token)
-            } else {
+            if (!token) {
                 const render = require('./render')
                 render.renderRegisterPage()
             }
+            const users_id = localStorage.getItem('userId')
+            let tutorials_id 
+            if (event.target.innerText === 'add') {
+                console.log('hi')
+                let tutorials_id = event.target.parentNode.parentNode.children[0].children[0].dataset.id
+                const users = require('../requests/users')
+                users.addToWatchListRequest(users_id, tutorials_id, token)
+            } else {
+                let tutorials_id = event.target.dataset.id
+                const users = require('../requests/users')
+                users.addToWatchListRequest(users_id, tutorials_id, token)
+            }     
+
         })
     })
 }
 
-// function tutorialPageAddButtonListener() {
-//     document.querySelectorAll('.add-button').forEach(button => {
-//         button.addEventListener('click', (ev) => {
-//             ev.preventDefault()
-//             const token = localStorage.getItem('token')
-//             const users_id = localStorage.getItem('userId')
-//             const tutorials_id = event.target
-//             console.log(tutorials_id)
-//             if (token) {
-//                 const users = require('../requests/users')
-//                 users.addToWatchListRequest(users_id, tutorials_id, token)
-//             } else {
-//                 const render = require('./render')
-//                 render.renderRegisterPage()
-//             }
-//         })
-//     })
-// }
+function tutorialAddButtonListener() {
+    document.querySelector('.tut-add-btn').addEventListener('click', (ev) => {
+            ev.preventDefault()
+            
+            const token = localStorage.getItem('token')
+            if (!token) {
+                const render = require('./render')
+                render.renderRegisterPage()
+             } else {
+                let tutorials_id = event.target.dataset.id
+                const users_id = localStorage.getItem('userId')
+                const users = require('../requests/users')
+                users.addToWatchListRequest(users_id, tutorials_id, token)
+             }
+            })    
+}
 
 
 function addComment (comment, id) {
@@ -228,4 +230,4 @@ function addComment (comment, id) {
   })
 }
 
-module.exports = { navButtonListeners, registerSubmitButtonListener, itemListeners, newTutorialListeners, addButtonListener, addComment }
+module.exports = { navButtonListeners, registerSubmitButtonListener, itemListeners, newTutorialListeners, addButtonListener, tutorialAddButtonListener, addComment }

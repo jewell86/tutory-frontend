@@ -242,7 +242,7 @@ i.material-icons.close {
 
 .profile-image {
   float: right;
-  margin: 60px 25px 50px 45px;
+  margin: 10px 25px 50px 45px;
   height: 300px;
   width: 250px;
 }
@@ -250,6 +250,10 @@ i.material-icons.close {
 .about-me {
   display: flex;
   flex-direction: column;
+}
+
+.profile-column {
+  height: 1px;
 }
 
 

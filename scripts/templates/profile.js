@@ -7,35 +7,33 @@ function updateProfilePageTemplate() {
 }
 
 function viewProfilePageTemplate( image, username, firstName, lastName, aboutMe ) {
-    return ` <div class="container-profile">
+  return `
+  <div class="container-profile">
     <div class="row">
-        <div class="col s6 profile-column">
-            <img class="profile-image" src="${image}">
+      <div class="about-container">
+        <div class="profile-column">
+          <img class="profile-image" src="${image}">
         </div>
-
-        <div class="col s6 about-me">
-            <div class="row">
-                <div class="col s12">
-                    <div class="card name-card">
-                    <h1 class="profile-username">${username}</h1>
-                    <h4 class="profile-name">${firstName} ${lastName}</h4>
-                    </div>
-                </div>
+        <div class="about-me">
+          <div class="user-info-div">
+            <div class="card name-card">
+              <h1 class="profile-username">${username}</h1>
+              <hr>
+              <h4 class="profile-name">${firstName} ${lastName}</h4>
             </div>
-            <div class="row">
-                <div class="col s12">
-                    <h4>About Me</h4>
-                     <p class="profile-about-me">${aboutMe}</p>
-                </div>
+            <div class="about-div">
+              <p class="profile-about-me">${aboutMe}</p>
             </div>
+          </div>
         </div>
-
+      </div>
     </div>
-    <div class="row grid home-tutorials">
-        <h1>My Tutorials</h1>
-        <div class="my-tutorials"></div>
+    <div class="row grid users-tutorials">
+      <h1 class="tutorials-header">My Tutorials</h1>
+      <div class="my-tutorials"></div>
     </div>
-</div>   `
+  </div>
+  `
 }
 
 

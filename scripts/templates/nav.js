@@ -5,15 +5,8 @@ function loggedInNavTemplate() {
     <div class="nav-wrapper">
       <a href="#" class="brand-logo nav-home">Tutory</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <li class="search">
-      <form>
-      <div class="input-field">
-          <input id="search" type="search" required>
-          <label class="label-icon" for="search"><i class="material-icons glass">search</i></label>
-          <i class="material-icons close">close</i>
-        </div>
-        </form>
-        </li>
+        <li class="makemargin"><input id="search" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"></li>
+        <li><button class="search-button btn btn-outline-success my-2 my-sm-0" type="submit">Search</button></li>
         <li><a href="#" class="nav-create-tutorial">New Tutorial</a></li>
         <li><a href="#" class="nav-my-tutorials">Watchlist</a></li>
         <li><a href="#" class="nav-my-profile">My Profile</a></li>
@@ -34,15 +27,8 @@ function navTemplate() {
     <div class="nav-wrapper">
       <a href="#" class="brand-logo nav-home">Tutory</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-      <li class="search">
-      <form>
-      <div class="input-field">
-          <input id="search" type="search" required>
-          <label class="label-icon" for="search"><i class="material-icons glass">search</i></label>
-          <i class="material-icons close">close</i>
-        </div>
-        </form>
-        </li>
+      <li class="makemargin"><input id="search" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"></li>
+        <li><button class="search-button btn btn-outline-success my-2 my-sm-0" >Search</button></li>
       <li class="dropdown">
       <a href="#" class="dropdown-toggle nav-login" data-toggle="dropdown"><b class="nav-login">Login</b> <span class="caret"></span></a>
         <ul id="login-dp" class="dropdown-menu">

@@ -46,7 +46,7 @@ function navButtonListeners() {
             localStorage.removeItem('userId')
             users.mainPageRequest('logout')
         })
-        document.querySelector('.search').addEventListener('submit', (ev) => {
+        document.querySelector('.search-button').addEventListener('click', (ev) => {
             ev.preventDefault()
             const query = document.querySelector('#search').value
             users.searchRequest( query )

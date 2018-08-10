@@ -154,18 +154,17 @@ nav {
 
 .form-control {
     max-height: 30px;
-    color:white;
+    background: none;
 }
 
 .makemargin {
     margin-top: 18px;
-    color:white;
+    background: none;
+
 }
 
-input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
-    background-color: none !important;
-    background-image: none !important;
-    color: rgb(0, 0, 0) !important;
+input:-webkit-autofill:focus {
+    transition: background-color none;
 }
 
 .btn-outline-success {

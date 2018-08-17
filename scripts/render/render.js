@@ -5,40 +5,39 @@ const message = require('./messages')
 const shuffle = require('lodash.shuffle')
 
 function renderMainPage(response, type) {
-    if (window.scrollY) window.scroll(0, 0)
+  if (window.scrollY) window.scroll(0, 0)
 
-    const main = document.querySelector('.main')
-    main.innerHTML = home.homePageTemplate()
-    const token = localStorage.getItem('token')
-    const navbar = document.querySelector('.navigation')
+  const main = document.querySelector('.main')
+  main.innerHTML = home.homePageTemplate()
+  const token = localStorage.getItem('token')
+  const navbar = document.querySelector('.navigation')
 
-    if (token) {
-      navbar.innerHTML = nav.loggedInNavTemplate()
-    } else {
-      navbar.innerHTML = nav.navTemplate()
+  if (token) {
+    navbar.innerHTML = nav.loggedInNavTemplate()
+  } else {
+    navbar.innerHTML = nav.navTemplate()
+  }
+
+  if (type === 'register') {
+    message.registerSuccess()
+  } else if (type === 'login') {
+    message.loginSuccess()
+  } else if (type === 'logout') {
+    message.logoutSuccess()
+  }
+
+  const data = Array.from(response.data.response)
+  const newData = shuffle(data)
+  newData.forEach(item => {
+    if (item.type === 'user') {
+      document.querySelector('.search-template').innerHTML += home.homeItemUser(item)
+    } else if (item.type === 'tutorial') {
+      document.querySelector('.search-template').innerHTML += home.homeItemTutorial(item)
     }
-
-    if (type === 'register') {
-      message.registerSuccess()
-    } else if (type === 'login') {
-      message.loginSuccess()
-    } else if (type === 'logout') {
-      message.logoutSuccess()
-    }
-
-    const data = Array.from(response.data.response)
-    const newData = shuffle(data)
-    newData.forEach(item => {
-      if (item.type === 'user') {
-        document.querySelector('.search-template').innerHTML += home.homeItemUser(item)
-      } else if (item.type === 'tutorial') {
-        document.querySelector('.search-template').innerHTML += home.homeItemTutorial(item)
-      }
-    })
-
-    events.navButtonListeners()
-    events.itemListeners()
-    events.addButtonListener()
+  })
+  events.navButtonListeners()
+  events.itemListeners()
+  events.addButtonListener()
 }
 
 
@@ -56,7 +55,6 @@ function renderRegisterPage() {
   } else {
     navbar.innerHTML = nav.navTemplate()
   }
-
   events.navButtonListeners()
   events.registerSubmitButtonListener()
 }
@@ -71,21 +69,22 @@ function renderUsersProfilePage(response) {
     const aboutMe = response.data.response.about_me
     const tutorials = response.data.response.myTutorials
     const userId = response.data.response.id
+
     document.querySelector('.main').innerHTML = profile.viewProfilePageTemplate(image, username, firstName, lastName, aboutMe)
     tutorials.forEach(tutorial => {
-        document.querySelector('.my-tutorials').innerHTML += profile.myTutorials(userId, tutorial)
+      document.querySelector('.my-tutorials').innerHTML += profile.myTutorials(userId, tutorial)
     })
+
     const token = localStorage.getItem('token')
     const navbar = document.querySelector('.navigation')
     if (token) {
-            navbar.innerHTML = nav.loggedInNavTemplate()
-        } else {
-            navbar.innerHTML = nav.navTemplate()
-        }
+          navbar.innerHTML = nav.loggedInNavTemplate()
+      } else {
+          navbar.innerHTML = nav.navTemplate()
+      }
     events.navButtonListeners()
     events.addButtonListener()
     events.itemListeners()
-
 }
 
 
@@ -116,18 +115,15 @@ function renderTutorialPage (response, user) {
 
   if (token) navbar.innerHTML = nav.loggedInNavTemplate()
   else navbar.innerHTML = nav.navTemplate()
-
   events.navButtonListeners()
   events.tutorialAddButtonListener()
-  
 }
 
 function addCommentsToCommentsDiv (comments, hideForm=false) {
   comments.forEach(async (userComment) => {
     try {
-      axios.get(`http://localhost:5000/users/${userComment.users_id}`)
+      axios.get(`https://vast-journey-84519.herokuapp.com/users/${userComment.users_id}`)
         .then(response => {
-            console.log(response)
           document.querySelector('.comments').innerHTML += tutorial.commentsTemplate(userComment.content, response.data.response)
           if (hideForm) document.getElementById('new-tutorial-form').style.display = 'none'
         })
@@ -163,10 +159,10 @@ function renderMyTutorialsPage(response) {
     const token = localStorage.getItem('token')
     const navbar = document.querySelector('.navigation')
     if (token) {
-            navbar.innerHTML = nav.loggedInNavTemplate()
-        } else {
-            navbar.innerHTML = nav.navTemplate()
-        }
+          navbar.innerHTML = nav.loggedInNavTemplate()
+      } else {
+          navbar.innerHTML = nav.navTemplate()
+      }
     events.navButtonListeners()
     const data = response.data.response
     data.forEach(item => {
@@ -200,10 +196,8 @@ function renderMyProfilePage(response) {
     }
 
     tutorials.forEach(tutorial => {
-
       document.querySelector('.my-tutorials').innerHTML += profile.myTutorials(userId, tutorial)
     })
-
     events.navButtonListeners()
     events.itemListeners()
     events.addButtonListener()
@@ -216,25 +210,25 @@ function renderSearchPage(response) {
     main.innerHTML = search.searchPageTemplate()
     const token = localStorage.getItem('token')
     const navbar = document.querySelector('.navigation')
+
     if (token) {
-            navbar.innerHTML = nav.loggedInNavTemplate()
-        } else {
-            navbar.innerHTML = nav.navTemplate()
-        }
+          navbar.innerHTML = nav.loggedInNavTemplate()
+      } else {
+          navbar.innerHTML = nav.navTemplate()
+      }
+
     events.navButtonListeners()
     const data = Array.from(response.data.response)
     data.forEach(item => {
-        if (item.type === 'user'){
-            document.querySelector('.search-template').innerHTML += search.searchItemUser(item)
-        } else if (item.type === 'tutorial') {
-            document.querySelector('.search-template').innerHTML += search.searchItemTutorial(item)
-        }
+      if (item.type === 'user'){
+          document.querySelector('.search-template').innerHTML += search.searchItemUser(item)
+      } else if (item.type === 'tutorial') {
+          document.querySelector('.search-template').innerHTML += search.searchItemTutorial(item)
+      }
     })
     events.navButtonListeners()
     events.itemListeners()
     events.addButtonListener()
-
 }
-
 
 module.exports = { renderMainPage, renderRegisterPage, renderUsersProfilePage, renderTutorialPage, renderCreateTutorialPage, renderMyTutorialsPage, renderMyProfilePage, renderSearchPage, addCommentsToCommentsDiv }

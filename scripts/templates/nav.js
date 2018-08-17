@@ -1,3 +1,4 @@
+
 function loggedInNavTemplate() {
     return `
     <div class="navbar-fixed">
@@ -16,7 +17,6 @@ function loggedInNavTemplate() {
     </div>
     </nav>
     </div>
-
 `
 }   
 
@@ -54,18 +54,11 @@ function navTemplate() {
             </li>
         </ul>
     </li>
-
       <li><a href="#"class="nav-register">Register</a></li>
       </ul>
     </div>
     </nav>
-
-     
-    
-
 `
 }
-
-
 
 module.exports = { loggedInNavTemplate, navTemplate }

@@ -1,3 +1,4 @@
+
 function profilePageTemplate() {
    return `<h1 class="profile">profile page</h1>`
 }

@@ -1,3 +1,4 @@
+
 function registerPageTemplate() {
     return    ` <div class="container register-form">
     <div class="row">

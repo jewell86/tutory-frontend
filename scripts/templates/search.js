@@ -1,3 +1,4 @@
+
 function searchPageTemplate() {
    return `
    <div class="home-tutorials search-template">
@@ -10,7 +11,7 @@ function searchPageTemplate() {
 
 
 
-function searchItemTutorial(item){
+function searchItemTutorial(item) {
     return ` <a href="#"><div class="card box z-depth-3">
     <div class="card-image">
       <img class="search-item z-depth-3" src="${item.img}" data-type="${item.type}" data-id="${item.id}" data-user-id="${item.users_id}">
@@ -24,7 +25,6 @@ function searchItemTutorial(item){
 
 
 function searchItemUser(item) {
-
  return ` <a href="#"><div class="card box z-depth-3">
     <div class="card-image z-depth-3">
       <img class="search-item" src="${item.photo_url}" data-type="${item.type}" data-id="${item.id}">

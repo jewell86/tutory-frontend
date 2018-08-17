@@ -53,4 +53,5 @@ function commentsTemplate (comment, user) {
     </div>
   `
 }
+
 module.exports = { tutorialPageTemplate, videosTemplate, commentsTemplate }

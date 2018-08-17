@@ -5,7 +5,7 @@ function createTutorial(title, description=null, img, users_id) {
 
   return axios({
     method: 'post',
-    url: 'http://localhost:5000/tutorials',
+    url: 'https://vast-journey-84519.herokuapp.com/tutorials',
     headers: { authorization: `Bearer ${token}` },
     data: { title, description, img, users_id }
   })
@@ -21,7 +21,7 @@ function createTutorialComment (users_id, tutorials_id, content) {
 
   return axios({
     method: 'post',
-    url: `http://localhost:5000/tutorials/${tutorials_id}/comments`,
+    url: `https://vast-journey-84519.herokuapp.com/tutorials/${tutorials_id}/comments`,
     headers: { authorization: `Bearer ${token}` },
     data: { users_id, tutorials_id, content }
   })

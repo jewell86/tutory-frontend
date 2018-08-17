@@ -1,8 +1,3 @@
-// function commentButtonTemplate () {
-//   return `
-//     <button class="add-comment">Add Comment</button>
-//   `
-// }
 
 function newCommentFormTemplate () {
   return `

@@ -1,3 +1,4 @@
+
 function createTutorialTemplate() {
   return `
     <div class="container create-tutorials-form register-form">
@@ -54,23 +55,4 @@ function createTutorialTemplate() {
   `
 }
 
-// function addAnotherVideoToTutorialTemplate() {
-//   return `
-//     <div class="row videos-row">
-//       <div class="input-field col s10">
-//         <input id="video" class="tutorial-video validate" type="text" required>
-//         <label for="video">Tutorial Video URL(s)</label>
-//       </div>
-//       <div class="input-field col s2 add-another-tutorial-div">
-//         <button class="btn btn-small btn-add-another-video waves-effect add-mult-videos-to-tutorial deep-orange accent-2" type="text">+ Video</button>
-//       </div>
-//     </div>
-//
-//   `
-// }
-
-function updateTutorialTemplate() {
-    ``
-}
-
-module.exports = { createTutorialTemplate, updateTutorialTemplate }
+module.exports = { createTutorialTemplate }

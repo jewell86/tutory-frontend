@@ -39,101 +39,99 @@ body{
 
 /* REGISTER PAGE */
 .register-form {
-    background-color:rgba(128,128,128,0.7);
-    padding: 20px 25px;
-    border: 5px solid rgba(0,0,128,0.5);
-    width: 550px;
-    height: auto;
-    box-sizing: border-box;
-    position: relative;
-    color: white;
+  background-color:rgba(128,128,128,0.7);
+  padding: 20px 25px;
+  border: 5px solid rgba(0,0,128,0.5);
+  width: 550px;
+  height: auto;
+  box-sizing: border-box;
+  position: relative;
+  color: white;
 }
 
 .input-field label {
-    color: white;
-    font-size: 14px;
+  color: white;
+  font-size: 14px;
 }
 
 .col.s6 > .btn {
-     width: 100%;
+  width: 100%;
 }
 
 .register-form {
-    animation: showUp 0.5s cubic-bezier(0.18, 1.3, 1, 1) forwards;
-    margin-top: 50px;
+  animation: showUp 0.5s cubic-bezier(0.18, 1.3, 1, 1) forwards;
+  margin-top: 50px;
 }
 
 @keyframes showUp {
-    0% {
-      transform: scale(0);
-    }
-    100% {
-      transoform: scale(1);
-    }
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transoform: scale(1);
+  }
 }
 
 /* LOGIN DROPDOWN */
-
 #login-dp{
-    min-width: 250px;
-    padding: 14px 14px 0;
-    overflow:hidden;
-    background-color:rgba(255,255,255,.8);
+  min-width: 250px;
+  padding: 14px 14px 0;
+  overflow:hidden;
+  background-color:rgba(255,255,255,.8);
 }
 
 #login-dp .help-block{
-    font-size:12px
+  font-size:12px
 }
+
 #login-dp .bottom{
-    background-color:rgba(255,255,255,.8);
-    border-top:1px solid #ddd;
-    clear:both;
-    padding:14px;
+  background-color:rgba(255,255,255,.8);
+  border-top:1px solid #ddd;
+  clear:both;
+  padding:14px;
 }
 
 #login-dp .form-group {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 @media(max-width:768px){
-    #login-dp{
-        background-color: inherit;
-        color: #fff;
-    }
-    #login-dp .bottom{
-        background-color: inherit;
-        border-top:0 none;
-    }
+  #login-dp{
+      background-color: inherit;
+      color: #fff;
+  }
+  #login-dp .bottom{
+      background-color: inherit;
+      border-top:0 none;
+  }
 }
 
 #login-dp.dropdown-menu {
-    margin-right: 50px;
-    position: absolute;
+  margin-right: 50px;
+  position: absolute;
 
 }
 
 /* FOOTER */
-
 footer.page-footer {
-    background-color: rgba(0, 0, 128, 0.5 );
+  background-color: rgba(0, 0, 128, 0.5 );
 }
 
 div.container.page-footer {
-    background-color: rgba(0, 0, 128, 0.5 )
+  background-color: rgba(0, 0, 128, 0.5 )
 }
 
 /* NAVBARS */
-
 a.dropdown-toggle.nav-login {
-    margin-right: 0px;
+  margin-right: 0px;
 }
 
 .nav-register {
-    margin-right: 150px;
+  margin-right: 150px;
 }
 
 nav {
-    background-color: rgba(0, 0, 128, 0.5 )
+  background-color: rgba(0, 0, 128, 0.5 )
 }
 
 .brand-logo {
@@ -164,27 +162,6 @@ input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill {
 .btn-outline-success {
     background: rgba(236, 121, 26, 0.7)
 }
-
-/* #ff6e40 */
-/*
-i.material-icons.glass {
-    padding-right: 100px;
-    display: block;
-
-}
-
-i.material-icons.close {
-
-} */
-
-/* div.input-field {
-    width: 150px;
-    margin-left: 50px;
-}
-
-.label-icon {
-    margin-right: 100px;
-} */
 
 /* PROFILE PAGE */
 .users-tutorials {
@@ -264,12 +241,12 @@ i.material-icons.close {
 
 /* TUTORIALS PAGE */
 .my-tutz {
-    text-align: center;
-    height: 60px;
-    /* width: 50%; */
-    background-color: rgba(234,124,14,0.7);
-    border: 2px solid rgba(0,0,128,0.5);
+  text-align: center;
+  height: 60px;
+  background-color: rgba(234,124,14,0.7);
+  border: 2px solid rgba(0,0,128,0.5);
   }
+
 .instructor-info, .tutorial-container, .comments-div {
   background-color:rgba(128,128,128,0.7);
   padding: 20px 20px;
@@ -380,48 +357,42 @@ i.material-icons.close {
 }
 
 /* CARDS */
-
 .search-item {
-    height: 200px;
-    width: 200px
+  height: 200px;
+  width: 200px
 }
 
 div.card-image {
-    height: 200px;
-    width: 200px;
+  height: 200px;
+  width: 200px;
 }
 
 /* ALERTS */
-
 .logout {
-    /* position: relative; */
-    padding-top: 10px;
+  padding-top: 10px;
 }
 
-
 /* STAR RATING  */
-
-
 .stars-outer {
-    display: inline-block;
-    position: relative;
-    font-family: FontAwesome;
-  }
+  display: inline-block;
+  position: relative;
+  font-family: FontAwesome;
+}
 
-  .stars-outer::before {
-    content: "\f006 \f006 \f006 \f006 \f006";
-  }
+.stars-outer::before {
+  content: "\f006 \f006 \f006 \f006 \f006";
+}
 
-  .stars-inner {
-    position: absolute;
-    top: 0;
-    left: 0;
-    white-space: nowrap;
-    overflow: hidden;
-    width: 0%;
-  }
+.stars-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 0%;
+}
 
-  .stars-inner::before {
-    content: "\f005 \f005 \f005 \f005 \f005";
-    color: #f8ce0b;
-  }
+.stars-inner::before {
+  content: "\f005 \f005 \f005 \f005 \f005";
+  color: #f8ce0b;
+}

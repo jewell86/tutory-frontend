@@ -5,7 +5,7 @@ function createTutorialContent(tutorials_id, url) {
 
   return axios({
     method: 'post',
-    url: `http://localhost:5000/tutorials/${tutorials_id}/content`,
+    url: `https://vast-journey-84519.herokuapp.com/tutorials/${tutorials_id}/content`,
     headers: { authorization: `Bearer ${token}` },
     data: { tutorials_id, url }
   })

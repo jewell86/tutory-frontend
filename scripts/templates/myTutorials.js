@@ -1,3 +1,4 @@
+
 function myTutorialsPageTemplate() {
     return ` <div class="home-tutorials my-tutorial-template">
     <h3 class="my-tutz">My Watchlist</h3>
